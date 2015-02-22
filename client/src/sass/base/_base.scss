@@ -1,0 +1,30 @@
+// TODO: move mixins to within base?
+@import '../mixins/colors';
+@import '../mixins/responsive';
+
+// -------------------------------
+// General Layout Sizes
+// -------------------------------
+$content-width: 1000px;
+$content-padding: 1rem;
+
+// -------------------------------
+// Breakpoint Sizes
+// -------------------------------
+$mobile-small : 320px;
+$mobile       : 480px;
+$tablet-small : 600px;
+$tablet       : 800px;
+
+// colors
+// TODO: use themes in actual styles
+$color-blue: darken(#1FC3F8, 10%);
+$color-blue--light: lighten($color-blue, 15%);
+$color-blue--dark: darken($color-blue, 15%);
+$color-black: #000;
+$color-white: #fff;
+
+// -------------------------------
+// Theme Selection
+// -------------------------------
+@import '../themes/default';

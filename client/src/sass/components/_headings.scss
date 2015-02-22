@@ -1,0 +1,30 @@
+@import '../base/base';
+
+.section-heading {
+  position: relative;
+
+  text-align: center;
+
+  .text {
+    position: relative;
+    z-index: 2;
+    padding: 0 1em;
+
+    background: $color-white;
+    color: rgb(50,50,50);
+    font-family: $font-heading;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    z-index: 1;
+    background: $color-blue;
+  }
+}

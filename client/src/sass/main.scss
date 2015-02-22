@@ -1,0 +1,15 @@
+// vendor
+// TODO: fonts commented out 2/21/15 - Check optimization best practices.
+// @import 'vendor/fonts';
+@import 'vendor/normalize';
+
+// mixins
+@import 'mixins/responsive';
+
+// layout
+@import 'layout/core';
+
+// components
+@import 'components/primary-nav';
+@import 'components/footer';
+@import 'components/headings';
