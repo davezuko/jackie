@@ -1,43 +1,27 @@
 module.exports = function (app, config) {
 
-  // TODO: DRY-ify root routes.
+  var BASE_ROUTES = [
+    'about',
+    'experience',
+    'writing-samples',
+    'bsw-curriculum',
+    'goals',
+    'contact'
+  ];
+
   app.get('/', function (req, res) {
     res.render('index', {
-      title: 'Home'
+      title : 'Home'
     });
   });
 
-  app.get('/about', function (req, res) {
-    res.render('about/index', {
-      title: 'About'
+  BASE_ROUTES.forEach(function (route) {
+    app.get('/' + route, function (req, res) {
+      res.render(route + '/index', {
+        title : route.split('-').map(function (name) {
+          return name[0].toUpperCase() + name.slice(1);
+        }).join(' ')
+      });
     });
   });
-
-  app.get('/contact', function (req, res) {
-    res.render('contact/index', {
-      title: 'Contact'
-    });
-  });
-
-
-    app.get('/writing-samples', function (req, res) {
-      res.render('writing-samples/index', {
-        title: 'Writing Samples'
-      });
-    });
-
-
-    app.get('/bsw-curriculum', function (req, res) {
-      res.render('bsw-curriculum/index', {
-        title: 'Contact'
-      });
-    });
-
-
-    app.get('/goals', function (req, res) {
-      res.render('goals/index', {
-        title: 'Goals'
-      });
-    });
-
 };

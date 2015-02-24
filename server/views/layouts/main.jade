@@ -6,7 +6,7 @@ mixin nav-item(name)
 doctype html
 html(lang='en')
   head
-    title= page
+    title= title
       |  Jackie Kutcher
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1')
@@ -17,9 +17,10 @@ html(lang='en')
   body
     div.page-container
       header
+        //- h1.title Jackie Kutcher
       nav.primary-nav
         div.content-container
-          span.nav-hero
+          a(href='/').nav-hero
             span.nav-hero__primary Jackie
             spab.nav-hero__break  |&nbsp;
             span.nav-hero__secondary Kutcher

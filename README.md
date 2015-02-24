@@ -63,3 +63,11 @@ Tech Stack
 * IO.js backing the express app (enables ES6 support by default)
 * ES6 -> 5 transpiling on the front-end.
 * Lean client-side (no jQuery, bootstrap, etc).
+
+Installation
+============
+
+Tech Requirements
+-----------------
+* Ruby (sass compilation uses ruby-sass until lib-sass supports io.js)
+* Node.js (recommended: io.js)

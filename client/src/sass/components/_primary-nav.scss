@@ -3,7 +3,11 @@
 .primary-nav {
   @extend .clearfix;
 
-  $background: none;
+  $hero-font-color: $color-black;
+  $hero-accent-color: $color-blue;
+  $hero-transition-speed: .3s;
+
+  $background: #fff;
 
   position: relative;
   display: block;
@@ -11,23 +15,50 @@
   background: $background;
   // border-top: 1px solid transparentize($color-black, .75);
   border-bottom: 1px solid transparentize($color-black, .75);
+  transition: all;
 
   &.locked {
-
+    position: fixed;
+    background: rgba(255,255,255, 1);
+    z-index: 2;
+    top: 0;
   }
 
+  // TODO: this shouldn't be absolutely positioned, figure out
+  // best way to maintain consistent navbar height.
   .nav-hero {
+
     position: absolute;
     top: 1.4em;
+    color: $hero-font-color;
     font-family: $font-heading;
     font-size: 1.35em;
     text-transform: uppercase;
+    text-decoration: none;
+    transition: all $hero-transition-speed;
+
+    &:hover {
+      color: $hero-accent-color;
+      letter-spacing: .1em;
+
+      .nav-hero__break {
+        // opacity: 0;
+        color: $hero-font-color;
+        // transform: rotate(20deg);
+        // transform: translateX(3px);
+      }
+    }
+
+
     // border-bottom: 1px solid $color-blue--light;
   }
 
   .nav-hero__break {
+    // display: none;
+    // display: inline-block;
     color: $color-blue;
     font-weight: 300;
+    // transition: all $hero-transition-speed;
   }
 
   .nav-hero__primary {
@@ -36,8 +67,6 @@
 
   .nav-hero__secondary {
     font-weight: 300;
-    // color:
-    // color: $color-blue--light;
   }
 
   .links {
