@@ -19,27 +19,6 @@
 }
 
 // ---------------------
-//  Base Styles
-// ---------------------
-img {
-  display: block;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.list--unstyled {
-  list-style: none;
-  padding: 0;
-}
-.list--inline {
-  @extend .clearfix;
-
-  > li {
-    float: left;
-  }
-}
-
-// ---------------------
 //  Utils
 // ---------------------
 .clearfix {

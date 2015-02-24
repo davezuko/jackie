@@ -1,0 +1,42 @@
+@import '../base/base';
+
+// -------------------------------
+// Font Configuration
+// -------------------------------
+body {
+  font-family: $font-copy;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $font-heading;
+}
+
+// -------------------------------
+// Font Weight Utils
+// -------------------------------
+.text--super-light {
+  font-weight: 100;
+}
+
+.text--light {
+  font-weight: 200;
+}
+
+.text--bold {
+  font-weight: 700;
+}
+
+.text--super-bold {
+  font-weight: 900;
+}
+
+// -------------------------------
+// Text Alignment Utils
+// -------------------------------
+.text--justify {
+  text-align: justify;
+}
+
+.text--center {
+  text-align: center;
+}

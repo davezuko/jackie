@@ -1,13 +1,17 @@
 @import '../base/base';
 
-.section-heading {
-  position: relative;
+.heading {
+  text-transform: uppercase;
+}
 
+.heading--section {
+  @extend .heading;
+
+  position: relative;
   text-align: center;
 
   .text {
     position: relative;
-    // z-index: 2;
     padding: 0 1em;
 
     background: $color-white;
@@ -24,7 +28,6 @@
     left: 0;
     height: 1px;
     width: 100%;
-    // z-index: 1;
     background: $color-blue;
   }
 }

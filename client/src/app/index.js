@@ -1,1 +1,1 @@
-require('./lib/primary-nav').init();
+require('./lib/nav-lock')('.primary-nav');

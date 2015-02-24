@@ -32,6 +32,9 @@ html(lang='en')
             +nav-item('Experience')
             +nav-item('Contact')
       div.view-container
+        if title
+          h1.heading--section
+            span.text=title
         block view-content
       footer
         div.content-container

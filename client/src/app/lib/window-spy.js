@@ -32,9 +32,9 @@ function cacheVerticalDims () {
 // Event Handlers
 // -----------------------------------
 function handleScroll () {
-  setVerticalDims();
+  cacheVerticalDims();
   _window.top    = getWindowTop();
-  _window.bottom = _window.
+  _window.bottom = _window.top + _window.height;
 
   Events.emit('window.scroll', {
     top    : _window.top,

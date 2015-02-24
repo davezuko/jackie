@@ -1,13 +1,12 @@
+@import 'base/base';
+
 // vendor
-// TODO: fonts commented out 2/21/15 - Check optimization best practices.
-// @import 'vendor/fonts';
 @import 'vendor/normalize';
 
-// mixins
-@import 'mixins/responsive';
-
-// layout
-@import 'layout/core';
+// core styles
+@import 'core/resets';
+@import 'core/typography';
+@import 'core/layout';
 
 // components
 @import 'components/footer';

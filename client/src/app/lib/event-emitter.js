@@ -9,12 +9,12 @@ exports.on = function (event, callback) {
     event    : event,
     callback : callback
   };
-  console.log(subscription.id);
   subscription.off = () => exports.off(subscription);
 
-  _subscriptions[event] = (
-    _subscriptions[event] || []
-  ).concat(subscription);
+  if (!_subscriptions[event]) {
+    _subscriptions[event] = [];
+  }
+  _subscriptions[event].push(subscription);
   return subscription;
 };
 
@@ -25,11 +25,12 @@ exports.emit = function (event, data) {
 };
 
 exports.off = function (sub) {
-  var local = _subscriptions[sub.event];
-  if (local) local = local.filter(s => s.id !== sub.id);
+  var eventType = _subscriptions[sub.event];
+  if (eventType) {
+    eventType = local.filter(s => s.id !== sub.id);
+  }
 };
 
-var unique = (key => key++)(0)
-// var unique = (function (key) {
-//   return () => key++;
-// })(0);
+var unique = (function (key) {
+  return () => key++;
+})(0);

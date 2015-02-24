@@ -1,0 +1,45 @@
+@import '../base/base';
+
+* {
+  box-sizing: border-box;
+}
+
+// ---------------------
+//  Page Structure
+// ---------------------
+.view-container {
+  position: relative;
+  z-index: 1;
+}
+
+.content-container {
+  position: relative;
+  max-width: $content-width;
+  margin: 0 auto;
+}
+
+// ---------------------
+//  Utils
+// ---------------------
+.clearfix {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
