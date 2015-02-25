@@ -1,5 +1,6 @@
 # Compiled files
 client/dist
+dist
 
 # Non-development configs
 **/config/*

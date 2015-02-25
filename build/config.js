@@ -27,7 +27,7 @@ exports.env.PROD = exports.env.PRODUCTION = 'production';
 exports.client        = {};
 exports.client.base   = path(exports.BASE, 'client');
 exports.client.src    = exports.client.base;
-exports.client.dest   = path(exports.client.base, 'dist');
+exports.client.dest   = path(exports.BASE, 'dist');
 exports.client.reload = undefined; // livereload port
 
 // --------------------------
