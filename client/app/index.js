@@ -1,1 +1,4 @@
-require('./lib/nav-lock')('.primary-nav');
+require('./lib/nav-lock')('.primary-nav', {
+  locked : true,
+  toggle : false
+});
