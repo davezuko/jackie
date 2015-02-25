@@ -46,14 +46,20 @@ function handleResize () {
 }
 
 var getWindowTop = (function (document) {
-  return document.documentElement.scrollTop
-    ? () => document.documentElement.scrollTop
-    : () => document.body.scrollTop;
+  return document.documentElement.scrollTop ?
+    () => document.documentElement.scrollTop :
+    () => document.body.scrollTop;
 })(document);
 
-
 // load initial window dimensions into cache
-// and attach event listeners
 updateCache();
-window.addEventListener('scroll', Debounce(handleScroll, 10));
-window.addEventListener('resize', Debounce(handleResize, 250));
+
+// Only attach window listeners if a module has subscribed to them.
+Events.onSubscription('window.scroll', function (event, eventName) {
+  console.log('something bound to window scroll');
+  window.addEventListener('scroll', Debounce(handleScroll, 0));
+}, true);
+
+Events.onSubscription('window.resize', function (event, eventName) {
+  window.addEventListener('resize', Debounce(handleResize, 250));
+}, true);

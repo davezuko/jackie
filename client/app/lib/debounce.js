@@ -1,10 +1,10 @@
 module.exports = (fn, threshold) => {
   var debounce;
 
-  return (...args) => {
+  return () => {
     if (debounce) return;
     debounce = setTimeout(() => {
-      fn(...args);
+      fn();
       debounce = false;
     }, threshold);
   };

@@ -3,4 +3,4 @@
 (noHeader => require('./lib/nav-lock')('.primary-nav', {
   locked : noHeader ? false : false,
   toggle : noHeader ? false : true
-}))(!document.getElementsByTagName('header').length);
+})).call(undefined, !document.getElementsByTagName('header').length);

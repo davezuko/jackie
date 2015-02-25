@@ -36,7 +36,7 @@ function init (node, config) {
   return {
     configure : configure
   };
-};
+}
 
 function configure (config) {
 
@@ -47,6 +47,7 @@ function configure (config) {
 
   // if lock toggle isn't disabled, bind event listeners
   if (config.toggle !== false) {
+    console.log(config);
     _events.push(Events.on('window.scroll', resolveLock));
     _events.push(Events.on('window.resize', function (data) {
       updateDOMCache();
