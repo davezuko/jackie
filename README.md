@@ -31,13 +31,14 @@ immediate MVP
 
 pipeline
 --------
+* navigation routes should be generated
 * JS-based page transitions when available
 * cache-busting
 * custom contact form
 * tracking/analytics
 * CI
 
-super-long pipeline
+long-term pipeline
 -------------------
 * custom CMS
 * theme management??
@@ -48,6 +49,7 @@ optimization
 * eliminate unused fonts
 * eventual build process for server views (eliminate express.js app)
 * better to use fonts in link tags or pull in via css?
+* rename font-awesome brand icons to avoid adblock
 
 Notes
 =====

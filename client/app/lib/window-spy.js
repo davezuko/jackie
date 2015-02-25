@@ -1,7 +1,8 @@
-var Events = require('./event-emitter');
+var Events   = require('./event-emitter'),
+    Debounce = require('./debounce');
 
 // ------------------------------------
-// cached properties
+// Cached properties
 // ------------------------------------
 var _window = {
   top    : undefined,
@@ -19,7 +20,6 @@ var _window = {
 function updateCache () {
   _window.height = window.innerHeight;
   _window.width  = window.innerWidth;
-
   cacheVerticalDims();
 }
 
@@ -33,8 +33,6 @@ function cacheVerticalDims () {
 // -----------------------------------
 function handleScroll () {
   cacheVerticalDims();
-  _window.top    = getWindowTop();
-  _window.bottom = _window.top + _window.height;
 
   Events.emit('window.scroll', {
     top    : _window.top,
@@ -55,9 +53,7 @@ var getWindowTop = (function (document) {
 
 
 // load initial window dimensions into cache
+// and attach event listeners
 updateCache();
-
-// attach event listeners
-// TODO: throttling...
-window.addEventListener('scroll', handleScroll);
-window.addEventListener('resize', handleResize);
+window.addEventListener('scroll', Debounce(handleScroll, 10));
+window.addEventListener('resize', Debounce(handleResize, 250));

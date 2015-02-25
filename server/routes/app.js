@@ -17,10 +17,16 @@ module.exports = function (app, config) {
 
   BASE_ROUTES.forEach(function (route) {
     app.get('/' + route, function (req, res) {
+      var properCase = route
+        .split('-')
+        .map(function (n) {
+          return n[0].toUpperCase() + n.slice(1);
+        })
+        .join(' ');
+
       res.render(route + '/index', {
-        title : route.split('-').map(function (name) {
-          return name[0].toUpperCase() + name.slice(1);
-        }).join(' ')
+        title   : properCase,
+        heading : properCase
       });
     });
   });

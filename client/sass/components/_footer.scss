@@ -3,23 +3,36 @@
 footer {
   @extend .clearfix;
 
+  padding: 1.5rem 0;
+
   border-top: 2px solid $color-blue;
   background: rgb(40,40,40);
-  padding: 1.5em 0;
 
-  .contact-links {
+  .contact {
     @extend .clearfix;
 
+    position: relative;
     float: right;
+  }
+
+  .contact__links {
+    @extend .clearfix;
 
     li {
       float: left;
-      padding: 0 1em;
-    }
+      padding: 0 .3rem;
 
-    a {
-      font-family: $font-heading;
-      color: $color-white;
+      i {
+        font-size: 1.75rem;
+        color: #fff;
+        transition: all .3s;
+      }
+
+      &:hover {
+        i {
+          color: $color-blue--light;
+        }
+      }
     }
   }
 }

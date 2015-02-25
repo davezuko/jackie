@@ -8,40 +8,50 @@
   @extend .heading;
 
   position: relative;
+  margin: 2rem auto;
   text-align: center;
 
-  .text {
+  .copy {
     position: relative;
-    padding: 0 1em;
+    padding: 0 10rem .5rem;
 
-    background: $color-white;
-    color: rgb(50,50,50);
+    color: tint($color-black, 10%);
     font-family: $font-heading;
-    font-weight: 300;
+    font-weight: 500;
     text-transform: uppercase;
 
+    border-bottom: 1px solid tint($color-black, 75%);
+  }
+}
+
+.heading--secondary {
+  @extend .heading;
+
+  display: block;
+  position: relative;
+  margin: 2rem 0;
+
+  text-align: center;
+  font-weight: 300;
+
+  .copy {
+    position: relative;
+    padding: 0 1rem;
+
+    background: $view-background;
+
     &:before {
-      $size: 150%;
+      $width: 200%;
 
       content: '';
       position: absolute;
-      // top: 50%;
-      bottom: 0;
-      left: 0;
       height: 1px;
-      width: $size;
-      left: 100% - ($size / 2);
+      background: tint($color-black, 75%);
       background: $color-blue;
+      width: $width;
+      left: -(100% - ($width / 4));
+      top: 50%;
+      z-index: -1;
     }
   }
-
-  // &:before {
-  //   content: '';
-  //   position: absolute;
-  //   top: 50%;
-  //   left: 0;
-  //   height: 1px;
-  //   width: 100%;
-  //   background: $color-blue;
-  // }
 }

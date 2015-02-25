@@ -1,19 +1,25 @@
 @import '../base/base';
 
 header {
-  position: relative;
+
   height: 350px;
   background: $color-blue;
 
+  .content-container {
+    display: table;
+    height: 100%;
+  }
+
   .title {
-    position: absolute;
-    top: 40%;
+    display: table-cell;
+    vertical-align: middle;
     width: 100%;
     margin-top: 0;
 
     text-transform: uppercase;
     font-family: $font-heading;
-    font-weight: 900;
+    font-size: 3rem;
+    font-weight: 700;
     text-align: center;
     color: $color-white;
   }

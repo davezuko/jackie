@@ -7,17 +7,17 @@ doctype html
 html(lang='en')
   head
     title= title
-      |  Jackie Kutcher
+      |  | Jackie Kutcher
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1')
     link(rel='stylesheet' href='/client/css/main.css')
     link(rel='author' content='David Zukowski' href='//zuko.me')
+    link(rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
     link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,700,300,800' rel='stylesheet' type='text/css')
     link(href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css')
   body
     div.page-container
-      header
-        //- h1.title Jackie Kutcher
+      block header
       nav.primary-nav
         div.content-container
           a(href='/').nav-hero
@@ -27,20 +27,25 @@ html(lang='en')
           ul.links.list--unstyled
             +nav-item('About')
             +nav-item('Goals')
-            +nav-item('Writing Samples')
-            +nav-item('BSW Curriculum')
             +nav-item('Experience')
+            +nav-item('BSW Curriculum')
+            +nav-item('Gallery')
             +nav-item('Contact')
       div.view-container
-        if title
-          h1.heading--section
-            span.text=title
+        if heading
+          h1.heading--section#heading
+            span.copy=heading
         block view-content
       footer
         div.content-container
-          ul.contact-links.list--unstyled
-            li
-              a(href='#') Email
-            li
-              a(href='#') LinkedIn
+          div.contact
+            ul.contact__links
+              li.email
+                a(href='mailto:test@dev.com')
+                  span.sr-only Email
+                  i.fa.fa-envelope-o
+              li.linkedin
+                a(href='//linkedin.com/pub/jacqueline-kutcher/b1/754/2ba')
+                  span.sr-only LinkedIn
+                  i.fa.fa-linkedin
     script(src='/client/app/app-bundle.js')
