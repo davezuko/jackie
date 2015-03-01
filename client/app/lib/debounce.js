@@ -1,5 +1,5 @@
 module.exports = (fn, threshold) => {
-  var debounce;
+  let debounce;
 
   return () => {
     if (debounce) return;

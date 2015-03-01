@@ -1,19 +1,23 @@
-// Basic pub/sub system
-var _subscriptions = {};
+const _ = require('functional-js/es5');
 
-module.exports = exports = {};
+// ------------------------------------
+// Basic Pub/Sub System
+// ------------------------------------
+let _subscriptions = {};
+let _api = module.exports = exports = {};
 
-exports.on = exports.subscribe = function (event, callback, destroy) {
+// basic unique ID generator.
+const unique = (seed => () => seed++).call(undefined, 0);
 
-  console.log('subscription to: ', event);
+_api.on = _api.subscribe = (event, callback, destroy) => {
   // create subscription object
   // TODO: make this a prototype?
-  var subscription = {
+  let subscription = {
     id    : unique(),
     event : event
   };
 
-  subscription.off = () => exports.off(event, subscription.id);
+  subscription.off = () => _api.off(event, subscription.id);
   subscription.callback = !destroy ?
     callback : (...args) => {
       callback(...args);
@@ -28,25 +32,23 @@ exports.on = exports.subscribe = function (event, callback, destroy) {
 
   // emit subscription event
   // TODO: emit() should automatically handle these child events
-  exports.emit('emitter.subscription');
-  exports.emit(`emitter.subscription:${event}`);
+  _api.emit('emitter.subscription');
+  _api.emit(`emitter.subscription:${event}`);
   return subscription;
 };
 
-exports.emit = exports.publish = function (event, data) {
+_api.emit = _api.publish = function (event, data) {
   if (_subscriptions[event]) {
     _subscriptions[event].forEach(s => s.callback(data || {}, s));
   }
 };
 
-exports.off = function (event, id) {
-  var eventType = _subscriptions[event];
+_api.off = function (event, id) {
+  let eventType = _subscriptions[event];
   if (eventType) {
     eventType = eventType.filter(s => s.id !== id);
   }
 };
 
-exports.onSubscription = (event, ...rest) =>
-  exports.on(`emitter.subscription:${event}`, ...rest);
-
-var unique = (seed => () => seed++).call(undefined, 0);
+_api.onSubscription = (event, ...rest) =>
+  _api.on(`emitter.subscription:${event}`, ...rest);

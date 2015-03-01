@@ -1,13 +1,13 @@
-var gulp       = require('gulp'),
-    common     = require('gulp-common'),
-    source     = require('vinyl-source-stream'),
-    watchify   = require('watchify'),
-    browserify = require('browserify');
+'use strict';
+const gulp       = require('gulp');
+const source     = require('vinyl-source-stream');
+const watchify   = require('watchify');
+const browserify = require('browserify');
 
-module.exports = function (config, plugins) {
+module.exports = function (common, config, plugins) {
 
   function getBundler () {
-    return browserify(config.app.bundle);
+    return browserify(config.get('app_bundle'));
   }
 
   gulp.task('app', ['app:lint'], function (callback) {
@@ -15,18 +15,18 @@ module.exports = function (config, plugins) {
   });
 
   gulp.task('app:lint', function () {
-    lint(gulp.src(common.path(config.app.src, '**/*.js')));
+    lint(gulp.src(common.path(config.get('app_src'), '**/*.js')));
   });
 
   gulp.task('app:watch', ['app:lint'], function () {
-    var watcher = watchify(getBundler());
+    let watcher = watchify(getBundler());
 
     bundle(watcher);
     watcher.on('update', function () {
       bundle(watcher);
-      common.toArray(arguments).reduce(function (flattened, item) {
+      [].slice.apply(arguments).reduce(function (flattened, item) {
         return flattened.concat(item);
-      }, []).map(gulp.src).map(lint);
+      }, []).map(gulp.src).forEach(lint);
     });
   });
 
@@ -39,12 +39,12 @@ module.exports = function (config, plugins) {
   });
 
   function bundle (bundler, callback) {
-    var tracker = common.track();
+    let tracker = common.track();
 
     if (common.isProd()) {
       bundler.plugin('minifyify', {
-        map    : config.app.map,
-        output : common.path(config.app.dest, config.app.map)
+        map    : config.get('app_map'),
+        output : common.path(config.get('app_dest', config.get('app_map')))
       });
     }
 
@@ -56,17 +56,17 @@ module.exports = function (config, plugins) {
          this.emit('end');
       })
       .on('end', function () {
-        common.log('Bundle finished after: ' + tracker() / 1000 + 's.');
+        common.log(`Bundle finished after ${tracker()} ms.`);
         callback && callback();
       })
-      .pipe(source(config.app.dist))
-      .pipe(gulp.dest(config.app.dest))
+      .pipe(source(config.get('app_dist')))
+      .pipe(gulp.dest(config.get('app_dest')))
       .pipe(plugins.livereload())
   }
 
   function lint (stream) {
     stream = stream
-      .pipe(plugins.jshint(config.js.lint))
+      .pipe(plugins.jshint(config.get('jshint')))
       .pipe(plugins.jshint.reporter('jshint-stylish'));
 
     if (common.isProd()) {

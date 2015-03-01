@@ -1,16 +1,15 @@
-var gulp   = require('gulp'),
-    common = require('gulp-common');
+'use strict';
+const gulp = require('gulp');
 
-module.exports = function (config, plugins) {
-  var app = require(config.server.base),
-      server;
+module.exports = function (common, config, plugins) {
+  let app = require(config.get('server_base'));
+  let server;
 
   gulp.task('server', function () {
     server = app.start();
   });
 
   gulp.task('server:watch', function () {
-    gulp.start('server');
-    // plugins.nodemon(config.server.nodemon);
+    plugins.nodemon(config.get('server_nodemon'));
   });
 };

@@ -1,28 +1,36 @@
-var path = require('path'),
-    env  = process.env.NODE_ENV; // this is set (or defaulted) in ../config.js
+'use strict';
+const common = require('gulp-common/es5.js');
+const path   = require('path');
 
 module.exports = function (base) {
-  var buildConfig = require(base + '/build/config');
+  const build = require(common.path(base, 'build', 'config'));
+  let config  = new Map();
 
-  var config = {
-    env  : env,
-    port : 3000,
-    gzip : {
-      enabled   : true,
-      threshold : 200   // kb (kilobytes)
-    },
-    proxy : {
-      trust : true // trust x-forwarded-* headers
-    },
-    client : {
-      dest    : path.resolve(base, buildConfig.client.dest),
-      expires : 86400000 * 7 // 1 week
-    },
-    public : {
-      dest    : path.resolve(buildConfig.server.base, 'public'),
-      expires : 86400000 * 7 // 1 week
-    }
-  };
+  // ----------------------------------
+  // Environment
+  // ----------------------------------
+  config.set('env', 'development');
+  config.set('port', 3000);
+
+  // ----------------------------------
+  // File Serving
+  // ----------------------------------
+  config.set('client_dest', path.resolve(build.get('client_dest')));
+  config.set('client_expires', 86400000 * 7); // 1 week
+
+  config.set('public_dest', path.resolve(build.get('server_base'), 'public'));
+  config.set('public_expires', 86400000 * 7); // 1 week
+
+  // ----------------------------------
+  // Compressions
+  // ----------------------------------
+  config.set('gzip_enabled', true);
+  config.set('gzip_threshold', 200);
+
+  // ----------------------------------
+  // Security
+  // ----------------------------------
+  config.set('trust_proxy', true); // trust x-forwarded-* headers
 
   return config;
 }

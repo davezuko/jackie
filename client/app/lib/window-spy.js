@@ -1,62 +1,49 @@
-var Events   = require('./event-emitter'),
-    Debounce = require('./debounce');
+const Events   = require('./event-emitter');
+const Debounce = require('./debounce');
 
 // ------------------------------------
 // Cached properties
 // ------------------------------------
-var _window = {
-  top    : undefined,
-  right  : undefined,
-  bottom : undefined,
-  left   : 0,
-
-  height : undefined,
-  width  : undefined
-};
+let _window = new Map();
 
 // -----------------------------------
 // Cache Updaters
 // -----------------------------------
-function updateCache () {
-  _window.height = window.innerHeight;
-  _window.width  = window.innerWidth;
-  cacheVerticalDims();
-}
+const getWindowTop = ((document) => {
+  return document.documentElement.scrollTop ?
+    () => document.documentElement.scrollTop :
+    () => document.body.scrollTop;
+}).call(undefined, document);
 
-function cacheVerticalDims () {
-  _window.top    = getWindowTop();
-  _window.bottom = _window.top + _window.height;
-}
+const updateCache = () => {
+  _window.set('height', window.innerHeight);
+  _window.set('width', window.innerWidth);
+  cacheVerticalDims();
+};
+
+const cacheVerticalDims = () => {
+  _window.set('top', getWindowTop());
+  _window.set('bottom', _window.get('top') + _window.get('height'));
+};
 
 // -----------------------------------
 // Event Handlers
 // -----------------------------------
-function handleScroll () {
+const handleScroll = () => {
   cacheVerticalDims();
+  Events.emit('window.scroll', _window);
+};
 
-  Events.emit('window.scroll', {
-    top    : _window.top,
-    bottom : _window.bottom
-  });
-}
-
-function handleResize () {
+const handleResize = () => {
   updateCache();
   Events.emit('window.resize', _window);
-}
-
-var getWindowTop = (function (document) {
-  return document.documentElement.scrollTop ?
-    () => document.documentElement.scrollTop :
-    () => document.body.scrollTop;
-})(document);
+};
 
 // load initial window dimensions into cache
 updateCache();
 
 // Only attach window listeners if a module has subscribed to them.
 Events.onSubscription('window.scroll', function (event, eventName) {
-  console.log('something bound to window scroll');
   window.addEventListener('scroll', Debounce(handleScroll, 0));
 }, true);
 

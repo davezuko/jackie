@@ -3,6 +3,7 @@ mixin nav-item(name)
     a(href="#{name.toLowerCase().split(' ').join('-')}")= name
     span.underline
 
+//- var navigation= navigation
 doctype html
 html(lang='en')
   head
@@ -26,11 +27,8 @@ html(lang='en')
             span.nav-hero__secondary Kutcher
           ul.links.list--unstyled
             +nav-item('About')
-            +nav-item('Goals')
-            +nav-item('Experience')
-            +nav-item('BSW Curriculum')
-            +nav-item('Gallery')
-            +nav-item('Contact')
+            +nav-item('BSW Education')
+            +nav-item('Career')
       div.view-container
         if heading
           h1.heading--section#heading

@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/davezuko/jackie-homepage",
   "dependencies": {
-    "babel": "^4.4.3",
     "body-parser": "~1.0.0",
     "compression": "~1.0.9",
     "debug": "~0.7.4",
@@ -31,7 +30,8 @@
     "harmonize": "^1.4.1",
     "jade": "~1.6.0",
     "morgan": "~1.0.0",
-    "serve-favicon": "~2.0.1"
+    "serve-favicon": "~2.0.1",
+    "functional-js": "git+https://git@github.com/davezuko/functional-js"
   },
   "devDependencies": {
     "babel": "^4.4.3",
@@ -47,7 +47,6 @@
     "gulp-nodemon": "^1.0.4",
     "gulp-plumber": "^0.6.6",
     "gulp-ruby-sass": "^1.0.0-alpha.3",
-    "gulp-sass": "^1.2.4",
     "gulp-watch": "^3.0.0",
     "jshint-stylish": "^1.0.0",
     "minifyify": "^4.4.0",

@@ -1,13 +1,17 @@
-var gulp   = require('gulp'),
-    common = require('gulp-common');
+'use strict';
+const gulp = require('gulp');
 
-module.exports = function (config, plugins) {
+// TODO: image paths should be defined in config
+// TODO: watch should pass stream into img handler function, rather than
+// re-globbing the entire image folder by re-running img task.
+module.exports = function (common, config, plugins) {
+
   gulp.task('img', function () {
-    gulp.src(config.client.src + '/img/**/*')
-      .pipe(gulp.dest(config.client.dest + '/img'));
+    gulp.src(config.get('client_src') + '/img/**/*')
+      .pipe(gulp.dest(config.get('client_dest') + '/img'));
   });
 
   gulp.task('img:watch', ['img'], function () {
-    gulp.watch(config.client.src + '/img/**/*', ['img']);
+    gulp.watch(config.get('client_src') + '/img/**/*', ['img']);
   });
 };

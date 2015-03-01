@@ -1,52 +1,56 @@
-var _slice = [].slice;
+'use strict';
 
-module.exports = exports = {};
+const _ = require('functional-js/es5');
+const _api = module.exports = exports = {};
 
-exports.get = function (selector, dontExtend) {
-  var nodes = toArray(document.querySelectorAll(selector));
-  return dontExtend ? nodes : nodes.map(exports.extend);
+// ------------------------------------
+// Core API Methods
+// ------------------------------------
+_api.get = (selector, dontExtend) => {
+  let nodes = [...document.querySelectorAll(selector)];
+  return dontExtend ? nodes : _.map(_api.extend, nodes);
 };
 
-exports.one = function (selector, dontExtend) {
-  return exports.get(selector, dontExtend)[0];
-};
-
-exports.extend = function (node) {
-  return new ExtendedNode(node);
-};
-
-function toArray (arrayLike) {
-  return _slice.apply(arrayLike);
-}
+_api.one = _.compose(_.first, _api.get);
 
 // -----------------------------------
-function ExtendedNode (node) {
-  this.node = node;
-}
+// Node Wrapper
+// -----------------------------------
+_api.extend = (node) => new ExtendedNode(node);
 
-ExtendedNode.prototype.hasClass = function (className) {
+const ExtendedNode = function (node) {
+  this.node = node;
+};
+
+ExtendedNode.prototype.hasClass = (className) => {
   return this.node.className.split(' ').indexOf(className) !== -1;
 };
 
-ExtendedNode.prototype.addClass = function (className) {
+ExtendedNode.prototype.addClass = (className) => {
   if (!this.hasClass(className)) {
     this.node.className = `${this.node.className} ${className}`;
   }
 };
 
-ExtendedNode.prototype.removeClass = function (className) {
+ExtendedNode.prototype.removeClass = (className) => {
   if (this.node.className.indexOf(className) !== -1) {
-    this.node.className = this.node.className
-      .split(' ')
-      .filter(c => c !== className)
-      .join(' ');
+    this.node.className = _.pipe(
+      _.split(' '),
+      _.filter(c => !_.equals(className, c)),
+      _.join(' ')
+    )(className);
   }
 };
 
-ExtendedNode.prototype.toggleClass = function (className, state) {    
-  if (typeof state !== 'undefined') {
-    this[state ? 'addClass' : 'removeClass'](className);
-  } else {
-    this[!this.hasClass(className) ? 'addClass' : 'removeClass'](className);
+ExtendedNode.prototype.toggleClass = (className, state) => {
+  let method = 'addClass';
+
+  if (
+    (state === false) ||
+    (_.is('undefined', state) && this.hasClass('state'))
+  ) {
+    method = 'removeClass';
   }
+
+  this[method]();
 };

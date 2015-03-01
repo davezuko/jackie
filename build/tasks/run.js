@@ -1,7 +1,7 @@
-var gulp   = require('gulp'),
-    common = require('gulp-common');
+'use strict';
+const gulp = require('gulp');
 
-module.exports = function defaultTask (config, plugins) {
+module.exports = function defaultTask (common, config, plugins) {
 
   gulp.task('build', ['client'], function () {
     // done...
@@ -16,9 +16,8 @@ module.exports = function defaultTask (config, plugins) {
   });
 
   gulp.task('deploy:prod', function (callback) {
-    process.env.NODE_ENV = config.env.PRODUCTION;
-    common.log('Forced Node environment to: %s', common.env());
-    
+    process.env.NODE_ENV = config.get('env_prod');
+    common.log(`Forced Node environment to: ${common.env()}`);
     gulp.start('build');
   });
 

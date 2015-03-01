@@ -1,85 +1,91 @@
-module.exports = exports = {};
+'use strict';
+const _slice = [].slice;
 
 // --------------------------
 // Path Helpers
 // --------------------------
-var pathLib = require('path'),
-    _slice  = [].slice;
+const PATH_LIB  = require('path');
+const PATH_JOIN = exports.PATH_JOIN = '/';
 
+// TODO: use spread operator once iojs supports it by default.
 function path () {
-  return pathLib.normalize(pathLib.resolve(
-    _slice.apply(arguments).join(PATH_JOIN)
-  ));
+  return PATH_LIB.normalize(
+    PATH_LIB.resolve(_slice.apply(arguments).join(PATH_JOIN))
+  );
 }
 
 // --------------------------
-// Common Paths
+// Begin Config Definition
 // --------------------------
-var BASE      = exports.BASE      = path(__dirname + '/../');
-var PATH_JOIN = exports.PATH_JOIN = '/';
+let config = new Map();
 
-// environment constants
-exports.env = {};
-exports.env.DEV = exports.env.DEVELOPMENT = 'development';
-exports.env.PROD = exports.env.PRODUCTION = 'production';
+// --------------------------
+// Environment
+// --------------------------
+config.set('base', PATH_LIB.normalize(
+  PATH_LIB.resolve(__dirname + PATH_JOIN + '..' + PATH_JOIN))
+);
+config.set('env_dev', 'development');
+config.set('env_prod', 'production');
 
-// static client files
-exports.client        = {};
-exports.client.base   = path(exports.BASE, 'client');
-exports.client.src    = exports.client.base;
-exports.client.dest   = path(exports.BASE, 'dist');
-exports.client.reload = undefined; // livereload port
+// --------------------------
+// Static Client Files
+// --------------------------
+config.set('client_base',   path(config.get('base'), 'client'));
+config.set('client_src',    path(config.get('client_base')));
+config.set('client_dest',   path(config.get('base'), 'dist', 'client'));
+config.set('client_reload', undefined); // livereload port
 
 // --------------------------
 // Client Application
 // --------------------------
-exports.app        = {};
-exports.app.entry  = 'index.js';
-exports.app.dist   = 'app-bundle.js';
-exports.app.map    = exports.app.dist.replace('.js', '.map.json');
-exports.app.src    = path(exports.client.src, 'app');
-exports.app.dest   = path(exports.client.dest, 'app');
-exports.app.bundle = {
+config.set('app_entry', 'index.js');
+config.set('app_dist',  'app-bundle.js');
+config.set('app_map',   config.get('app_dist').replace('.js', '.map.json'));
+config.set('app_src',   path(config.get('client_src'), 'app'));
+config.set('app_dest',  path(config.get('client_dest'), 'app'));
+config.set('app_bundle', {
   cache        : {},
   debug        : true,
-  entries      : path(exports.app.src, exports.app.entry),
+  entries      : path(config.get('app_src'), config.get('app_entry')),
   fullPaths    : true,
   transform    : ['babelify'],
   packageCache : {}
-};
+});
 
 // --------------------------
 // Server
 // --------------------------
-exports.server         = {};
-exports.server.base    = path(exports.BASE, 'server');
-exports.server.nodemon = {
-  script : path(exports.server.base, 'start.js'),
+config.set('server_base', path(config.get('base'), 'server'));
+config.set('server_scripts', path(config.get('server_base'), 'scripts'));
+config.set('server_nodemon', {
+  script : path(config.get('server_scripts'), 'start.js'),
   ext    : 'js',
   env    : { 'NODE_ENV' : 'development' },
   ignore : [
-    path(exports.client.base, '**'),
-    path(BASE, 'build', '**')
+    path(config.get('client_base'), '**'),
+    path(config.get('client_dest'), '**'),
+    path(config.get('base'), 'build', '**'),
+    'node_modules',
+    '.sass-cache'
   ]
-};
+});
 
 // --------------------------
 // Sass
 // --------------------------
-exports.sass = {
-  src       : path(exports.client.src, 'sass'),
-  dest      : path(exports.client.dest, 'css'),
-  prefix    : ['last 2 versions', '> 2%'],
-  cssMinify : {
-    keepSpecialComments : 0
-  }
-};
+config.set('sass_src',    path(config.get('client_src'), 'sass'));
+config.set('sass_entry',  path(config.get('sass_src'), 'main.scss'));
+config.set('sass_dest',   path(config.get('client_dest'), 'css'));
+config.set('sass_prefix', ['last 2 versions', '> 2%']);
+config.set('sass_minify', {
+  keepSpecialComments : 0
+});
 
 // --------------------------
-// Code Quality (JS)
+// Code Quality (JSHint)
 // --------------------------
-exports.js = {};
-exports.js.globals = {
+config.set('js_globals', {
   'console'     : true,
   'alert'       : false,
   'document'    : false,
@@ -90,12 +96,13 @@ exports.js.globals = {
   'require'     : false,
   'exports'     : true,
   'module'      : true
-};
-exports.js.lint = {
+});
+config.set('jshint', {
   'bitwise'   : false,
   'camelcase' : true,
   'curly'     : false,
   'eqeqeq'    : true,
+  'esnext'    : true,
   'forin'     : false,
   'immed'     : true,
   'indent'    : 2,
@@ -111,35 +118,10 @@ exports.js.lint = {
   'maxparams' : false,
   'maxdepth'  : false,
   'maxlen'    : 80,
-  'esnext'    : true,
-  'globals'   : exports.js.globals
-};
+  'globals'   : config.get('js_globals')
+});
 
 // --------------------------
-// Karma Testing
+// Module Exports
 // --------------------------
-exports.karma = {
-  basePath : process.cwd(),
-
-  port      : 8000,
-  colors    : true,
-  autoWatch : true,
-  logLevel  : 'INFO',
-
-  files : [
-    path(exports.client.dest, exports.app.dist)
-      .replace(exports.BASE + exports.PATH_JOIN, '')
-  ],
-  exclude : [],
-
-  browsers : ['PhantomJS'],
-  plugins  : [
-    'karma-mocha',
-    'karma-phantomjs-launcher',
-    'karma-chai',
-    'karma-sinon-chai',
-    'karma-mocha-reporter'
-  ],
-  frameworks : ['mocha', 'chai', 'sinon-chai'],
-  reporters  : ['mocha'],
-};
+module.exports = exports = config;

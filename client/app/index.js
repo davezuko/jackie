@@ -1,6 +1,6 @@
+// Temporary polyfill until I fix functional-js...
+// Babel assumes Array.from exists.
+require('./polyfills/array-from');
 
-// initialze primary navigation
-(noHeader => require('./lib/nav-lock')('.primary-nav', {
-  locked : noHeader ? false : false,
-  toggle : noHeader ? false : true
-})).call(undefined, !document.getElementsByTagName('header').length);
+// initialze primary navigation affixer
+require('./lib/affix')('.primary-nav');
