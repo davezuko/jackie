@@ -6,6 +6,10 @@ const WindowLib = require('./window-spy');
 // ------------------------------------
 // Private Cache
 // ------------------------------------
+// TODO
+// * Should always affix in <= tablet.
+// * Top-Padding needs to adjust on window resize.
+// ------------------------------------
 let _cache = new Map();
 let _state = new Map();
 let _$affixed;
@@ -56,7 +60,6 @@ const resolveLock = (windowBounds) => {
 };
 
 const setLockState = (locked) => {
-  console.log('setting lock state: ', locked);
   _$content.node.style.paddingTop = _cache.get('content_padding') +
     (locked ? `${_cache.get('height')}` : 0) + 'px';
 

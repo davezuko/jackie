@@ -18,11 +18,10 @@ module.exports = function (app, config) {
 
   PRIMARY_NAV.forEach(function (nav) {
     let snaked = camelToSnake(nav);
-    console.log(snaked);
 
     app.get(`/${snaked}`, function (req, res) {
       res.render(`${snaked}/index`, {
-        title : nav
+        title  : nav
       });
     });
   });
