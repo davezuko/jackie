@@ -1,5 +1,3 @@
-'use strict';
-
 const _ = require('functional-js/es5');
 const _api = module.exports = exports = {};
 

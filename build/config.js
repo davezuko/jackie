@@ -65,12 +65,12 @@ config.set('server_nodemon', {
   ignore : [
     'build',
     'client',
+    'dist',
     'node_modules',
     '.sass-cache'
   ]
 });
 
-console.log(config.get('server_nodemon'));
 // --------------------------
 // Sass
 // --------------------------

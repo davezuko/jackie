@@ -9,11 +9,11 @@ let _window = new Map();
 // -----------------------------------
 // Cache Updaters
 // -----------------------------------
-const getWindowTop = ((document) => {
+const getWindowTop = (function (document) {
   return document.documentElement.scrollTop ?
     () => document.documentElement.scrollTop :
     () => document.body.scrollTop;
-}).call(undefined, document);
+})(document);
 
 const updateCache = () => {
   _window.set('height', window.innerHeight);
@@ -44,9 +44,16 @@ updateCache();
 
 // Only attach window listeners if a module has subscribed to them.
 Events.onSubscription('window.scroll', function (event, eventName) {
-  window.addEventListener('scroll', Debounce(handleScroll, 0));
+  window.addEventListener('scroll', handleScroll);
 }, true);
 
 Events.onSubscription('window.resize', function (event, eventName) {
   window.addEventListener('resize', Debounce(handleResize, 250));
 }, true);
+
+// ------------------------------------
+// Public API
+// ------------------------------------
+const _api = module.exports = exports = {};
+
+_api.get = (prop) => prop ? _window.get(prop) : _window;
