@@ -9,12 +9,16 @@ const Events  = require('./event-emitter');
 let _cache = new Map();
 let _state = new Map();
 let _$affixed;
+let _$content;
 
 // ------------------------------------
-const init = (selector) => {
+const init = (selector, content) => {
   _$affixed = $.one(selector);
+  _$content = $.one(content || 'body');
   if (typeof _$affixed !== 'object') {
-    throw new Error(`Could not find a DOM node for selector ${selector}.`);
+    throw new Error(`Could not find a node for selector ${selector}.`);
+  } else if (typeof _$content !== 'object') {
+    throw new Error(`Could not find a content node for selector ${content}.`);
   }
 
   // Initialize locked state and cache original DOM position
@@ -29,19 +33,22 @@ const init = (selector) => {
 const cacheDOM = () => {
   _cache.set('height', _$affixed.node.offsetHeight);
   _cache.set('orig_top', _$affixed.node.offsetTop);
-  _cache.set('orig_bottom', _cache.get('top') + _cache.get('height'));
 };
 
 const resolveLock = (bounds) => {
-  if (_state.get('locked')) {
-
+  if (bounds.get('top') > _cache.get('orig_top')) {
+    setLockState(true);
+  } else {
+    setLockState(false);
   }
 };
 
-const setLockState = (state) => {
-  _state.set('locked', state);
-  _$affixed.toggleClass('locked', state);
-  // window.scrollBy(0, state ? -_cache.height : _cache.height);
+const setLockState = (locked) => {
+  if (locked === _state.get('locked')) return;
+
+  _$content.node.style.paddingTop = locked ? `${_cache.get('height')}px` : 0;
+  _state.set('locked', locked);
+  _$affixed.toggleClass('locked', locked);
 };
 
 // ------------------------------------
