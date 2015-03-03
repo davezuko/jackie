@@ -23,11 +23,14 @@ const init = (selector, content) => {
 
   // Initialize locked state and cache original DOM position
   _state.set('locked', false);
+  _cache.set('content_padding', _$content.node.style.paddingTop || 0);
   cacheDOM();
 
   // Attach window events
   Events.on('window.scroll', resolveLock);
-  Events.on('window.resize', _.all(cacheDOM, resolveLock));
+  Events.on('window.resize', _.all(
+    () => setLockState(false), cacheDOM, resolveLock
+  ));
 };
 
 const cacheDOM = () => {
@@ -35,18 +38,22 @@ const cacheDOM = () => {
   _cache.set('orig_top', _$affixed.node.offsetTop);
 };
 
+// TODO: more efficient checks (scroll direction even?) to limit
+// lock state manipulation.
 const resolveLock = (bounds) => {
-  if (bounds.get('top') > _cache.get('orig_top')) {
+  let viewIsBelow = bounds.get('top') > _cache.get('orig_top');
+
+  if (!_state.get('locked') && viewIsBelow) {
     setLockState(true);
-  } else {
+  } else if (!viewIsBelow) {
     setLockState(false);
   }
 };
 
 const setLockState = (locked) => {
-  if (locked === _state.get('locked')) return;
+  _$content.node.style.paddingTop = _cache.get('content_padding') +
+    (locked ? `${_cache.get('height')}` : 0) + 'px';
 
-  _$content.node.style.paddingTop = locked ? `${_cache.get('height')}px` : 0;
   _state.set('locked', locked);
   _$affixed.toggleClass('locked', locked);
 };

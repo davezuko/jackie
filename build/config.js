@@ -63,14 +63,14 @@ config.set('server_nodemon', {
   ext    : 'js',
   env    : { 'NODE_ENV' : 'development' },
   ignore : [
-    path(config.get('client_base'), '**'),
-    path(config.get('client_dest'), '**'),
-    path(config.get('base'), 'build', '**'),
+    'build',
+    'client',
     'node_modules',
     '.sass-cache'
   ]
 });
 
+console.log(config.get('server_nodemon'));
 // --------------------------
 // Sass
 // --------------------------
