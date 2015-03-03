@@ -43,8 +43,8 @@ module.exports = function (common, config, plugins) {
 
     if (common.isProd()) {
       bundler.plugin('minifyify', {
-        map    : config.get('app_map'),
-        output : common.path(config.get('app_dest', config.get('app_map')))
+        map    : false,
+        output : common.path(config.get('app_dest'), config.get('app_dist'))
       });
     }
 

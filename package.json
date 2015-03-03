@@ -49,7 +49,7 @@
     "gulp-ruby-sass": "^1.0.0-alpha.3",
     "gulp-watch": "^3.0.0",
     "jshint-stylish": "^1.0.0",
-    "minifyify": "^4.4.0",
+    "minifyify": "^6.3.1",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.2.1"
   }
