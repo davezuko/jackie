@@ -1,7 +1,7 @@
 mixin nav-item(name)
-  li(class=name===active ? 'active' : '')
-    a(href="#{name.toLowerCase().split(' ').join('-')}")= name
-    span.underline
+  li.primary-nav__item(class=name===active ? 'active' : '')
+    a.primary-nav__item__link(href="#{name.toLowerCase().split(' ').join('-')}")= name
+    span.primary-nav__item__accent
 
 //- var navigation= navigation
 doctype html
@@ -20,15 +20,15 @@ html(lang='en')
     div.page-container
       block header
       nav.primary-nav
-        div.content-container
-          a(href='/').nav-hero
-            span.nav-hero__primary Jackie
-            spab.nav-hero__break  |&nbsp;
-            span.nav-hero__secondary Kutcher
-          a.nav-toggle
+        div.content-container.clearfix
+          a(href='/').primary-nav__hero
+            span Jackie
+            spab.primary-nav__hero__accent  |&nbsp;
+            span Kutcher
+          a.primary-nav__toggle
             i.fa.fa-bars
-          ul.links.list--unstyled
-            li.mobile
+          ul.primary-nav__links.list--unstyled
+            li.tablet-only
               a(href='/') Home
               span.underline
             +nav-item('About')

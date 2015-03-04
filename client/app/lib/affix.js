@@ -53,20 +53,20 @@ const cacheDOM = () => {
 
 const resolveLock = (windowBounds) => {
   if (windowBounds.get('top') > _cache.get('orig_top')) {
-    if (!_state.get('locked')) {
+    if (!_state.get('affixed')) {
       setLockState(true);
     }
-  } else if (_state.get('locked')) {
+  } else if (_state.get('affixed')) {
     setLockState(false);
   }
 };
 
-const setLockState = (locked) => {
+const setLockState = (affixed) => {
   _$content.node.style.paddingTop = _cache.get('content_padding') +
-    (locked ? `${_cache.get('height')}` : 0) + 'px';
+    (affixed ? `${_cache.get('height')}` : 0) + 'px';
 
-  _state.set('locked', locked);
-  _$affixed.toggleClass('locked', locked);
+  _state.set('affixed', affixed);
+  _$affixed.toggleClass('affixed', affixed);
 };
 
 // ------------------------------------

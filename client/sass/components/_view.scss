@@ -1,0 +1,17 @@
+@import '../base/base';
+
+.view-container {
+  background: $view-background-color;
+  position: relative;
+  z-index: 1;
+}
+
+.content-container {
+  position: relative;
+  max-width: $content-width;
+  margin: 0 auto;
+
+  @include breakpoint($content-width) {
+    padding: 0 2em;
+  }
+}

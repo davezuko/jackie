@@ -1,16 +1,16 @@
 @import '../base/base';
 
 // -------------------------------
-// Font Configuration
+// Base Font Styles
 // -------------------------------
-body {
-  font-family: $font-copy;
-}
-
 h1,h2,h3,h4,h5,h6 {
   font-family: $font-heading;
 }
 
+body {
+  font-family: $font-copy;
+  font-size: $base-font-size;
+}
 // -------------------------------
 // Font Weight Utils
 // -------------------------------

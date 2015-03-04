@@ -1,6 +1,15 @@
 extends ../../layouts/main.jade
 
+mixin gallery-item(src, title)
+  span.title= title
+  div.img-container
+    img(src=src alt=title)
+
 block view-content
   div.content-container
     h1.heading--section
       span.copy Personal Gallery
+    div.row
+      ul.gallery-items.list--unstyled
+        li.col-sm-4
+          +gallery-item('', 'Test Item')

@@ -1,94 +1,32 @@
 @import '../base/base';
 
-// TODO: cleaner way of vertically aligning links
-// TODO: massive refactoring needed.
+$hero-vertical-offset: 1em;
+
 .primary-nav {
-  @extend .clearfix;
-
-  $hero-font-color: $color-black;
-  $hero-accent-color: $color-blue;
-  $hero-transition-speed: .3s;
-  $hero-font-size: 1.35rem;
-  $background: #fff;
-  $mobile-nav-breakpoint: $tablet-small;
-
-  padding: 2rem 0;
-  position: relative;
   display: block;
-  width: 100%;
+  position: relative;
+  padding: 2rem 0;
   transition: all;
 
-  background: $background;
-  border-bottom: 1px solid transparentize($color-black, .75);
+  background: $nav-background-color;
+  border-bottom: $nav-border;
 
-  &.locked {
+  &.affixed {
     position: fixed;
     top: 0;
     z-index: 2;
-    background: rgba(255,255,255, 1);
   }
 
-  @include breakpoint($mobile-nav-breakpoint) {
+  @include breakpoint($nav-mobile-threshold) {
     padding: .75rem 0;
-
-    &.active {
-
-      .nav-toggle {
-        color: $color-blue;
-        transform: rotate(180deg);
-      }
-
-      .links {
-        display: block;
-      }
-    }
   }
 
-  .nav-hero {
-    float: left;
-    transition: all $hero-transition-speed;
-
-    color: $hero-font-color;
-    font-family: $font-heading;
-    font-size: $hero-font-size;
-    text-transform: uppercase;
-    text-decoration: none;
-
-    &:hover {
-      @include breakpoint-min($tablet + 1) {
-        color: $hero-accent-color;
-        letter-spacing: .1rem;
-
-        .nav-hero__break {
-          color: $hero-font-color;
-        }
-      }
-    }
-
-    @include breakpoint($tablet) {
-      display: none;
-    }
-  }
-
-  .nav-hero__break {
-    color: $color-blue;
-    font-weight: 300;
-  }
-
-  .nav-hero__primary {
-    font-weight: 300;
-  }
-
-  .nav-hero__secondary {
-    font-weight: 300;
-  }
-
-  .nav-toggle {
+  &__toggle {
     display: none;
     font-size: 2rem;
     transition: all .3s;
 
-    @include breakpoint($mobile-nav-breakpoint) {
+    @include breakpoint($nav-mobile-threshold) {
       display: inline-block;
     }
 
@@ -96,93 +34,116 @@
       cursor: pointer;
     }
   }
+}
 
-  .links {
-    float: right;
-    line-height: $hero-font-size + ($hero-font-size / 3);
+// --------------------------------
+// Navigation Hero
+// --------------------------------
+.primary-nav__hero {
+  $hero-namespace: &;
 
-    @include breakpoint($mobile-nav-breakpoint) {
-      display: none;
-      float: none;
-    }
+  float: left;
+  transition: all $global-transition-speed;
 
-    li {
-      position: relative;
-      float: left;
-      margin: 0 .75rem 0 0;
-      padding: 0;
-      transition: all .3s;
+  color: $nav-hero-color;
+  font-family: $font-heading;
+  font-size: $nav-hero-size;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-decoration: none;
 
-      &.active {
-        a {
-          color: $color-blue;
-        }
-        // color: $color-blue;
+  &:hover {
+    @include breakpoint-min($tablet + 1) {
+
+      &:not(#{$hero-namespace}__accent) {
+        color: $nav-hero-accent-color;
+        letter-spacing: .1rem;
       }
 
-      &.mobile {
-        display: none;
-      }
-
-      @include breakpoint($mobile-nav-breakpoint) {
-        display: block;
-        float: none;
-
-        &.mobile {
-          display: block;
-        }
-      }
-
-      &:hover {
-        a {
-          color: $color-blue;
-        }
-
-        .underline {
-          opacity: 1;
-          transform: translateY(2px);
-          background: $color-blue;
-        }
-      }
-
-      a {
-        display: block;
-        height: 100%;
-        color: $color-black;
-        font-family: $font-heading;
-        font-weight: 300;
-        text-decoration: none;
-        transition: all .3s;
-
-        @include breakpoint($mobile-nav-breakpoint) {
-          padding: 1rem 0;
-          font-size: 1.25rem;
-          font-weight: 300;
-          text-transform: uppercase;
-          text-align: center;
-
-          &:hover {
-            background: $color-blue;
-            color: #fff;
-          }
-        }
+      #{$hero-namespace}__accent {
+        color: $nav-hero-color;
       }
     }
+  }
 
-    .underline {
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 1px;
+  @include breakpoint($tablet) {
+    display: none;
+  }
 
-      background: $color-black;
-      opacity: 0;
-      transform: translateY(15px);
-      transition: .25s all;
+  &__accent {
+    color: $nav-hero-accent-color;
+    font-weight: 300;
+    transition: color $global-transition-speed;
+  }
+}
 
-      @include breakpoint($mobile-nav-breakpoint) {
-        display: none;
-      }
+// --------------------------------
+// Navigation Links
+// --------------------------------
+.primary-nav__links {
+  float: right;
+  line-height: $nav-hero-size + ($nav-hero-size / 3);
+
+  @include breakpoint($nav-mobile-threshold) {
+    display: none;
+    float: none;
+  }
+}
+
+.primary-nav__item {
+  $item-namespace: &;
+  $accent-color: $color-blue;
+
+  position: relative;
+  float: left;
+  margin: 0 .75rem 0 0;
+  padding: 0;
+  transition: all $global-transition-speed;
+
+  &__link {
+    display: block;
+    height: 100%;
+    color: $color-black;
+    font-family: $font-heading;
+    font-weight: 300;
+    text-decoration: none;
+    transition: all .3s;
+  }
+
+  &:hover {
+    #{$item-namespace}__link {
+      color: $accent-color;
+    }
+
+    #{$item-namespace}__accent {
+      opacity: 1;
+      background: $accent-color;
+      transform: translateY(2px);
+    }
+  }
+
+  &__accent {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+
+    background: $color-black;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: .25s all;
+  }
+
+  @include breakpoint($nav-mobile-threshold) {
+    padding: .5rem 0;
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+
+    &:hover {
+      background: $color-blue;
+      color: #fff;
     }
   }
 }

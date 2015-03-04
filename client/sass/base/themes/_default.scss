@@ -1,18 +1,24 @@
-@import '../base/base';
+@import '../utils/breakpoints';
+@import '../utils/colors';
 
 // ------------------------------------
 // Generic View Styles
 // ------------------------------------
 $view-background-color: $color-white;
+$content-width: 1000px;
+$content-padding: 1rem;
 
 // ------------------------------------
 // Primary Navigation
 // ------------------------------------
 $nav-background-color: $color-white;
 $nav-border: 1px solid transparentize($color-black, .75);
+
+$nav-hero-size: 1.5rem;
 $nav-hero-color: $color-black;
 $nav-hero-accent-color: $color-blue;
 
+$nav-mobile-threshold: $tablet;
 
 // ------------------------------------
 // Animation Constants
@@ -22,5 +28,7 @@ $global-transition-speed: .3s;
 // ------------------------------------
 // Generic Font Styles
 // ------------------------------------
+$base-font-size: 1em;
+
 $font-heading: 'Lato', sans-serif;
 $font-copy: 'Open Sans', sans-serif;
