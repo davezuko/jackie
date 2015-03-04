@@ -16,6 +16,10 @@
   position: relative;
   max-width: $content-width;
   margin: 0 auto;
+
+  @include breakpoint($content-width) {
+    padding: 0 2em;
+  }
 }
 
 // ---------------------

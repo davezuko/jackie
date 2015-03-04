@@ -60,7 +60,7 @@ config.set('server_base', path(config.get('base'), 'server'));
 config.set('server_scripts', path(config.get('server_base'), 'scripts'));
 config.set('server_nodemon', {
   script : path(config.get('server_scripts'), 'start.js'),
-  ext    : 'js jade',
+  ext    : 'js',
   env    : { 'NODE_ENV' : 'development' },
   ignore : [
     'build',

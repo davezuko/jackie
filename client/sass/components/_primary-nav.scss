@@ -1,6 +1,7 @@
 @import '../base/base';
 
 // TODO: cleaner way of vertically aligning links
+// TODO: massive refactoring needed.
 .primary-nav {
   @extend .clearfix;
 
@@ -9,6 +10,7 @@
   $hero-transition-speed: .3s;
   $hero-font-size: 1.35rem;
   $background: #fff;
+  $mobile-nav-breakpoint: $tablet-small;
 
   padding: 2rem 0;
   position: relative;
@@ -23,8 +25,23 @@
     position: fixed;
     top: 0;
     z-index: 2;
-
     background: rgba(255,255,255, 1);
+  }
+
+  @include breakpoint($mobile-nav-breakpoint) {
+    padding: .75rem 0;
+
+    &.active {
+
+      .nav-toggle {
+        color: $color-blue;
+        transform: rotate(180deg);
+      }
+
+      .links {
+        display: block;
+      }
+    }
   }
 
   .nav-hero {
@@ -38,12 +55,18 @@
     text-decoration: none;
 
     &:hover {
-      color: $hero-accent-color;
-      letter-spacing: .1rem;
+      @include breakpoint-min($tablet + 1) {
+        color: $hero-accent-color;
+        letter-spacing: .1rem;
 
-      .nav-hero__break {
-        color: $hero-font-color;
+        .nav-hero__break {
+          color: $hero-font-color;
+        }
       }
+    }
+
+    @include breakpoint($tablet) {
+      display: none;
     }
   }
 
@@ -60,20 +83,50 @@
     font-weight: 300;
   }
 
+  .nav-toggle {
+    display: none;
+    font-size: 2rem;
+    transition: all .3s;
+
+    @include breakpoint($mobile-nav-breakpoint) {
+      display: inline-block;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   .links {
     float: right;
     line-height: $hero-font-size + ($hero-font-size / 3);
+
+    @include breakpoint($mobile-nav-breakpoint) {
+      display: none;
+      float: none;
+    }
 
     li {
       position: relative;
       float: left;
       margin: 0 .75rem 0 0;
       padding: 0;
-
       transition: all .3s;
 
-      &:hover {
+      &.mobile {
+        display: none;
+      }
 
+      @include breakpoint($mobile-nav-breakpoint) {
+        display: block;
+        float: none;
+
+        &.mobile {
+          display: block;
+        }
+      }
+
+      &:hover {
         a {
           color: $color-blue;
         }
@@ -84,15 +137,29 @@
           background: $color-blue;
         }
       }
-    }
 
-    a {
-      display: block;
-      color: $color-black;
-      font-family: $font-heading;
-      font-weight: 300;
-      text-decoration: none;
-      transition: .25s all;
+      a {
+        display: block;
+        height: 100%;
+        color: $color-black;
+        font-family: $font-heading;
+        font-weight: 300;
+        text-decoration: none;
+        transition: all .3s;
+
+        @include breakpoint($mobile-nav-breakpoint) {
+          padding: 1rem 0;
+          font-size: 1.25rem;
+          font-weight: 300;
+          text-transform: uppercase;
+          text-align: center;
+
+          &:hover {
+            background: $color-blue;
+            color: #fff;
+          }
+        }
+      }
     }
 
     .underline {
@@ -105,6 +172,10 @@
       opacity: 0;
       transform: translateY(15px);
       transition: .25s all;
+
+      @include breakpoint($mobile-nav-breakpoint) {
+        display: none;
+      }
     }
   }
 }

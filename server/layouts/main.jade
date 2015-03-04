@@ -1,5 +1,5 @@
-mixin nav-item(name)
-  li
+mixin nav-item(name, mobileOnly)
+  li(class=mobileOnly ? 'mobile' : '')
     a(href="#{name.toLowerCase().split(' ').join('-')}")= name
     span.underline
 
@@ -25,7 +25,10 @@ html(lang='en')
             span.nav-hero__primary Jackie
             spab.nav-hero__break  |&nbsp;
             span.nav-hero__secondary Kutcher
+          a.nav-toggle
+            i.fa.fa-bars
           ul.links.list--unstyled
+            +nav-item('Home', true)
             +nav-item('About')
             +nav-item('BSW Education')
             +nav-item('Career')

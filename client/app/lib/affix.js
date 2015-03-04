@@ -4,17 +4,19 @@ const Events    = require('./event-emitter');
 const WindowLib = require('./window-spy');
 
 // ------------------------------------
-// Private Cache
+// Locals
 // ------------------------------------
 // TODO
 // * Should always affix in <= tablet.
 // * Top-Padding needs to adjust on window resize.
 // ------------------------------------
-let _cache = new Map();
-let _state = new Map();
-let _$affixed;
-let _$content;
+let _cache = new Map(); // position cache for affixed node
+let _state = new Map(); // flags for tracking module state
+let _$affixed; // node to be affixed
+let _$content; // page content node to apply offset padding to
 
+// ------------------------------------
+// Functionality
 // ------------------------------------
 const init = (selector, content) => {
   _$affixed = $.one(selector);

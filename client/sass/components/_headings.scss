@@ -7,26 +7,6 @@
 .heading--section {
   @extend .heading;
 
-  position: relative;
-  margin: 2rem auto;
-  text-align: center;
-
-  .copy {
-    position: relative;
-    padding: 0 10rem .5rem;
-
-    color: tint($color-black, 10%);
-    font-family: $font-heading;
-    font-weight: 500;
-    text-transform: uppercase;
-
-    border-bottom: 1px solid tint($color-black, 75%);
-  }
-}
-
-.heading--secondary {
-  @extend .heading;
-
   display: block;
   position: relative;
   margin: 2rem 0;
@@ -53,5 +33,25 @@
       top: 50%;
       z-index: -1;
     }
+  }
+}
+
+.heading--secondary {
+  @extend .heading;
+
+  position: relative;
+  margin: 2rem auto;
+  text-align: center;
+
+  .copy {
+    position: relative;
+    padding: 0 10rem .5rem;
+
+    color: tint($color-black, 10%);
+    font-family: $font-heading;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    border-bottom: 1px solid tint($color-black, 75%);
   }
 }
