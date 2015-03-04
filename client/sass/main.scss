@@ -7,9 +7,14 @@
 @import 'core/resets';
 @import 'core/typography';
 @import 'core/layout';
+@import 'core/grid';
 
 // components
 @import 'components/footer';
+@import 'components/form';
 @import 'components/header';
 @import 'components/headings';
 @import 'components/primary-nav';
+
+// sections
+@import 'sections/contact';

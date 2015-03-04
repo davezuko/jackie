@@ -1,0 +1,64 @@
+@import '../base/base';
+
+// TODO: add gutters?
+
+$grid-size: 12 !default;
+$col-prefix: 'col' !default;
+
+.row {
+  @extend .clearfix;
+
+  position: relative;
+}
+
+.column {
+  position: relative;
+  float: left;
+}
+
+@for $i from 1 through $grid-size {
+  .#{$col-prefix}-sm-#{$i},
+  .#{$col-prefix}-md-#{$i},
+  .#{$col-prefix}-lg-#{$i} {
+    @extend .column;
+  }
+
+  .#{$col-prefix}-lg-#{$i} {
+    @extend .column;
+
+    @include breakpoint-min($tablet + 1) {
+      width: (100% / $grid-size) * $i;
+    }
+  }
+
+  .#{$col-prefix}-md-#{$i} {
+    @extend .column;
+
+    @include breakpoint-min($mobile + 1) {
+      width: (100% / $grid-size) * $i;
+    }
+  }
+
+  .#{$col-prefix}-sm-#{$i} {
+    @extend .column;
+
+    width: (100% / $grid-size) * $i;
+  }
+
+  // column offsets
+  .#{$col-prefix}-lg-push-#{$i} {
+    @include breakpoint-min($tablet + 1) {
+      margin-left: (100% / $grid-size) * $i;
+    }
+  }
+
+  .#{$col-prefix}-md-push-#{$i} {
+    @include breakpoint-min($mobile + 1) {
+      margin-left: (100% / $grid-size) * $i;
+    }
+  }
+
+  .#{$col-prefix}-sm-push-#{$i} {
+    margin-left: (100% / $grid-size) * $i;
+  }
+}

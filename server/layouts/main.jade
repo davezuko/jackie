@@ -1,5 +1,5 @@
-mixin nav-item(name, mobileOnly)
-  li(class=mobileOnly ? 'mobile' : '')
+mixin nav-item(name)
+  li(class=name===active ? 'active' : '')
     a(href="#{name.toLowerCase().split(' ').join('-')}")= name
     span.underline
 
@@ -28,7 +28,9 @@ html(lang='en')
           a.nav-toggle
             i.fa.fa-bars
           ul.links.list--unstyled
-            +nav-item('Home', true)
+            li.mobile
+              a(href='/') Home
+              span.underline
             +nav-item('About')
             +nav-item('BSW Education')
             +nav-item('Career')

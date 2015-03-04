@@ -29,7 +29,6 @@ ExtendedNode.prototype.on = function (event, handler) {
 };
 
 ExtendedNode.prototype.hasClass = function (className) {
-  console.log('checking has class: ', className);
   return this.node.className.split(' ').indexOf(className) !== -1;
 };
 

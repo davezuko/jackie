@@ -113,6 +113,13 @@
       padding: 0;
       transition: all .3s;
 
+      &.active {
+        a {
+          color: $color-blue;
+        }
+        // color: $color-blue;
+      }
+
       &.mobile {
         display: none;
       }

@@ -20,8 +20,10 @@ module.exports = function (app, config) {
     let snaked = camelToSnake(nav);
 
     app.get(`/${snaked}`, function (req, res) {
+
       res.render(`${snaked}/index`, {
-        title  : nav
+        title  : nav,
+        active : nav
       });
     });
   });
