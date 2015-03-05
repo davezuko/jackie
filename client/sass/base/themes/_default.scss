@@ -1,5 +1,9 @@
-@import '../utils/breakpoints';
-@import '../utils/colors';
+@import '../includes/breakpoints';
+@import '../includes/colors';
+
+// ------------------------------------
+// Component Colors
+// ------------------------------------
 
 // ------------------------------------
 // Generic View Styles
@@ -28,7 +32,10 @@ $global-transition-speed: .3s;
 // ------------------------------------
 // Generic Font Styles
 // ------------------------------------
-$base-font-size: 1em;
-
 $font-heading: 'Lato', sans-serif;
 $font-copy: 'Open Sans', sans-serif;
+
+$base-font-size: 1em;
+
+$copy-color: $color-teal--dark;
+$heading-color: $color-teal--dark;

@@ -5,10 +5,8 @@ let _$toggle;
 
 // TODO: error handling
 const init = (selector) => {
-  _$node = $.one(selector);
-
-  // TODO: this should be dynamic
-  _$toggle = $.one('.nav-toggle');
+  _$node   = $.one(selector);
+  _$toggle = $.one(`${selector}__toggle`);
 
   _$toggle.on('click', function () {
     _$node.toggleClass('active');

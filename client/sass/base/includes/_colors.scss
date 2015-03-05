@@ -1,5 +1,10 @@
 $color-blue: darken(#1FC3F8, 10%);
 $color-blue--light: lighten($color-blue, 15%);
 $color-blue--dark: darken($color-blue, 15%);
+
 $color-black: #000;
 $color-white: #fff;
+
+$color-teal: lighten(#445A64, 15%);
+$color-teal--dark: darken($color-teal, 15%);
+$color-teal--light: lighten($color-teal, 15%);
