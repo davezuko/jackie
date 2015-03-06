@@ -1,29 +1,43 @@
 'use strict';
 
-const PRIMARY_NAV = [
-  'About', 'BSW Education', 'Career', 'Gallery', 'Contact'
-];
-
-function camelToSnake (str) {
-  return str.split(' ').join('-').toLowerCase();
-}
+// TODO: these could be dynamically pulled in from /views
+const NAV_ITEMS = [
+  'About',
+  'BSW Education',
+  'Career',
+  'Gallery',
+  'Contact'
+].map(function (item) {
+  return {
+    name  : item,
+    route : `/${item.toLowerCase().split(' ').join('-')}`
+  };
+});
 
 module.exports = function (app, config) {
 
+  // ----------------------------------
+  // Navigation Middleware
+  // ----------------------------------
+  app.use(function (req, res, next) {
+    res.locals.navigation = NAV_ITEMS;
+    next();
+  });
+
+  // ----------------------------------
+  // Core View Routes
+  // ----------------------------------
   app.get('/', function (req, res) {
     res.render('index', {
       title: 'Home'
     });
   });
 
-  PRIMARY_NAV.forEach(function (nav) {
-    let snaked = camelToSnake(nav);
-
-    app.get(`/${snaked}`, function (req, res) {
-
-      res.render(`${snaked}/index`, {
-        title  : nav,
-        active : nav
+  NAV_ITEMS.forEach(function (item) {
+    app.get(`${item.route}`, function (req, res) {
+      res.render(`${item.route.slice(1)}/index`, {
+        title  : item.name,
+        active : item.name
       });
     });
   });

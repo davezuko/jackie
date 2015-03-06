@@ -42,11 +42,8 @@ if (config.get('trust_proxy')) {
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
-fs.readdirSync(__dirname + '/routes')
-  .forEach(function (route) {
-    require('./routes/' + route)(app, config);
-  });
-
+require('./routes/client')(app, config);
+require('./routes/views')(app, config);
 // ---------------------------------------
 // Error Handling
 // Note: Must be declared after routes.

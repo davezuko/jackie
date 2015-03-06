@@ -1,6 +1,7 @@
-mixin nav-item(name)
-  li.primary-nav__item(class=name===active ? 'active' : '')
-    a.primary-nav__item__link(href="#{name.toLowerCase().split(' ').join('-')}")= name
+mixin nav-item(name, route, hideInDesktop)
+  - var classes = [name === active ? 'active' : '', hideInDesktop ? 'tablet-only' : ''];
+  li.primary-nav__item(class=classes)
+    a.primary-nav__item__link(href="#{route}")=name
     span.primary-nav__item__accent
 
 doctype html
@@ -25,14 +26,9 @@ html(lang='en')
           a.primary-nav__toggle
             i.fa.fa-bars
           ul.primary-nav__links.list--unstyled
-            li.tablet-only
-              a(href='/') Home
-              span.underline
-            +nav-item('About')
-            +nav-item('BSW Education')
-            +nav-item('Career')
-            +nav-item('Gallery')
-            +nav-item('Contact')
+            +nav-item('Home', '/', true)
+            each item in navigation
+              +nav-item(item.name, item.route)
       div.view-container
         if heading
           h1.heading--section#heading
