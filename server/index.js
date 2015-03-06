@@ -37,14 +37,30 @@ if (config.get('trust_proxy')) {
 }
 
 // ---------------------------------------
+// Cache-Busting Middleware
+// ---------------------------------------
+const bustHashes = require('../dist/client/css/busters.json');
+const busters = Object.keys(bustHashes)
+  .reduce(function (map, key) {
+    if (key.indexOf('main.css') !== -1) {
+      map.css = bustHashes[key];
+    } else if (key.indexOf('app-bundle.js') !== -1) {
+      map.js = bustHashes[key];
+    }
+    return map;
+  }, {});
+
+app.use(function(req, res, next){
+  res.locals.busters = busters;
+  next();
+});
+
+// ---------------------------------------
 // Route Definitions
 // ---------------------------------------
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
-// ---------------------------------------
-// Route Definitions
-// ---------------------------------------
 fs.readdirSync(__dirname + '/routes')
   .forEach(function (route) {
     require('./routes/' + route)(app, config);

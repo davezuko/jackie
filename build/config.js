@@ -35,6 +35,7 @@ config.set('client_base',   path(config.get('base'), 'client'));
 config.set('client_src',    path(config.get('client_base')));
 config.set('client_dest',   path(config.get('base'), 'dist', 'client'));
 config.set('client_reload', undefined); // livereload port
+config.set('client_buster', path(config.get('client_dest'), 'busters.json'));
 
 // --------------------------
 // Client Application

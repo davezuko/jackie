@@ -27,11 +27,12 @@
     "debug": "~0.7.4",
     "express": "~4.7.2",
     "express-favicon": "^1.0.1",
+    "functional-js": "git+https://git@github.com/davezuko/functional-js",
     "harmonize": "^1.4.1",
     "jade": "~1.6.0",
     "morgan": "~1.0.0",
     "serve-favicon": "~2.0.1",
-    "functional-js": "git+https://git@github.com/davezuko/functional-js"
+    "static-asset": "^0.5.7"
   },
   "devDependencies": {
     "babel": "^4.4.3",

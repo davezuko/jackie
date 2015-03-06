@@ -12,6 +12,10 @@
   margin: 0 auto;
 
   @include breakpoint($content-width) {
-    padding: 0 2em;
+    padding: 0 2rem;
   }
+}
+
+.copy-container {
+  padding: 0 5%;
 }

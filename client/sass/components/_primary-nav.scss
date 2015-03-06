@@ -6,7 +6,7 @@ $hero-vertical-offset: 1em;
   display: block;
   width: 100%;
   position: relative;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   transition: all;
 
   background: $nav-background-color;
@@ -104,14 +104,20 @@ $hero-vertical-offset: 1em;
   &__link {
     display: block;
     height: 100%;
-    color: $color-black;
     font-family: $font-heading;
     font-weight: 300;
-    text-decoration: none;
     transition: all .3s;
+
+    &,
+    &:visited {
+      color: $nav-link-color;
+      text-decoration: none;
+    }
   }
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     #{$item-namespace}__link {
       color: $accent-color;
     }

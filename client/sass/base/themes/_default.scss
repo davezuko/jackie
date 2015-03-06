@@ -13,23 +13,6 @@ $content-width: 1000px;
 $content-padding: 1rem;
 
 // ------------------------------------
-// Primary Navigation
-// ------------------------------------
-$nav-background-color: $color-white;
-$nav-border: 1px solid transparentize($color-black, .75);
-
-$nav-hero-size: 1.5rem;
-$nav-hero-color: $color-black;
-$nav-hero-accent-color: $color-blue;
-
-$nav-mobile-threshold: $tablet;
-
-// ------------------------------------
-// Animation Constants
-// ------------------------------------
-$global-transition-speed: .3s;
-
-// ------------------------------------
 // Generic Font Styles
 // ------------------------------------
 $font-heading: 'Lato', sans-serif;
@@ -39,3 +22,21 @@ $base-font-size: 1em;
 
 $copy-color: $color-teal--dark;
 $heading-color: $color-teal--dark;
+
+// ------------------------------------
+// Primary Navigation
+// ------------------------------------
+$nav-link-color: $copy-color;
+$nav-background-color: $color-white;
+$nav-border: 1px solid transparentize($color-black, .75);
+
+$nav-hero-size: 1.5rem;
+$nav-hero-color: $heading-color;
+$nav-hero-accent-color: $color-blue;
+
+$nav-mobile-threshold: $tablet;
+
+// ------------------------------------
+// Animation Constants
+// ------------------------------------
+$global-transition-speed: .3s;
