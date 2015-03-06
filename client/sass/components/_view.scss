@@ -4,6 +4,7 @@
   background: $view-background-color;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 .content-container {

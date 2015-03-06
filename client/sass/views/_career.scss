@@ -1,0 +1,81 @@
+@import '../base/base';
+
+$content-vertical-offset: 2rem;
+$border: 1px solid rgb(200,200,200);
+
+.view__career {
+  margin-bottom: 2rem;
+
+  // TODO: standardize this
+  .heading--section {
+    margin-bottom: 3rem;
+  }
+}
+
+.career-item {
+  @extend .clearfix;
+
+  position: relative;
+  border-bottom: $border;
+
+  &__container {
+    border-left: $border;
+    padding-top: $content-vertical-offset;
+  }
+
+  &__content {
+    padding: 0 0 2rem;
+  }
+
+  &__heading {
+    margin-top: 0;
+  }
+}
+
+
+.flag-list__container {
+  padding-top: $content-vertical-offset;
+}
+
+.flag-list {
+  @extend .clearfix;
+}
+
+.flag {
+  $bottom-margin: 1rem;
+  $vertical-padding: .4rem;
+
+  $font-size: .75rem;
+  $color: $color-white;
+  $background: rgb(190,190,190);
+  $accent-background: $color-blue;
+
+  position: relative;
+  width: 80%;
+  margin-bottom: $bottom-margin;
+  padding: $vertical-padding 1rem;
+  background: $background;
+  color: $color;
+  font-size: $font-size;
+
+  &:after {
+    $size: $font-size + ($vertical-padding * .475);
+    content: '';
+    position: absolute;
+    right: -.85rem;
+    top: 0;
+    border-top: $size solid transparent;
+    border-left: $size solid $background;
+    border-bottom: $size solid transparent;
+  }
+
+
+  &--accent {
+    background: $accent-background;
+    margin-bottom: 2.5 * $bottom-margin;
+
+    &:after {
+      border-left-color: $accent-background;
+    }
+  }
+}

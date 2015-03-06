@@ -12,8 +12,8 @@ $gutter-size-sm: 8px;
   width: 100%;
   box-sizing: content-box;
   position: relative;
-  padding: 0 $gutter-size-sm;
-  margin-left: -$gutter-size-sm;
+  padding: 0 2 * $gutter-size-sm;
+  margin-left: -2 * $gutter-size-sm;
 
   @include breakpoint-min($mobile + 1) {
     padding: 0 $gutter-size-md;
@@ -21,13 +21,12 @@ $gutter-size-sm: 8px;
   }
 
   @include breakpoint-min($tablet + 1) {
-    padding: 0 $gutter-size-lg;
-    margin-left: -$gutter-size-lg;
+    padding: 0 2 * $gutter-size-lg;
+    margin-left: -2 * $gutter-size-lg;
   }
 }
 
 .column {
-  box-sizing: content-box;
   position: relative;
   width: 100%;
   float: left;
