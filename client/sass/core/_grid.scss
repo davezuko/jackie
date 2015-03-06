@@ -1,93 +1,72 @@
 @import '../base/base';
 
-$col-prefix: 'col' !default;
-$grid-size: 12 !default;
-$gutter-size-lg: 15px;
-$gutter-size-md: 10px;
-$gutter-size-sm: 8px;
+// TODO: breakpoint-specific gutters
+// TODO: .col-push-yy-x
+
+$column-prefix : 'col' !default;
+$column-count  : 12    !default;
+
+$gutter-size: 10px;
+$half-gutter: $gutter-size / 2;
 
 .row {
   @extend .clearfix;
 
-  width: 100%;
-  box-sizing: content-box;
-  position: relative;
-  padding: 0 2 * $gutter-size-sm;
-  margin-left: -2 * $gutter-size-sm;
+  width : 100%;
+  margin-left  : -$half-gutter;
+  margin-right : -$half-gutter;
+}
 
-  @include breakpoint-min($mobile + 1) {
-    padding: 0 $gutter-size-md;
-    margin-left: -$gutter-size-md;
+.#{$column-prefix} {
+  display  : block;
+  position : relative;
+  width    : 100%;
+  float    : left;
+  padding  : 0 $half-gutter;
+}
+
+@for $index from 1 through $column-count {
+  $column-percentage: 100% * ($index / $column-count);
+
+  .#{$column-prefix}-sm-#{$index},
+  .#{$column-prefix}-md-#{$index},
+  .#{$column-prefix}-lg-#{$index} {
+    @extend .#{$column-prefix};
+
+    padding : 0 $half-gutter;
   }
 
-  @include breakpoint-min($tablet + 1) {
-    padding: 0 2 * $gutter-size-lg;
-    margin-left: -2 * $gutter-size-lg;
+  .#{$column-prefix}-md-#{$index} {
+    @include breakpoint-min($mobile + 1) {
+      width : $column-percentage;
+    }
+  }
+
+  .#{$column-prefix}-lg-#{$index} {
+    @include breakpoint-min($tablet + 1) {
+      width : $column-percentage;
+    }
   }
 }
 
-.column {
-  position: relative;
-  width: 100%;
-  float: left;
-
-  padding: 0 $gutter-size-sm;
-
-  @include breakpoint-min($mobile + 1) {
-    padding: 0 $gutter-size-md;
-  }
-
-  @include breakpoint-min($tablet + 1) {
-    padding: 0 $gutter-size-lg;
+@for $index from 1 through $column-count {
+  .#{$column-prefix}-sm-#{$index} {
+    width : 100% * ($index / $column-count);
   }
 }
 
-@for $i from 1 through $grid-size {
-  .#{$col-prefix}-sm-#{$i},
-  .#{$col-prefix}-md-#{$i},
-  .#{$col-prefix}-lg-#{$i} {
-    @extend .column;
-  }
-
-  .#{$col-prefix}-lg-#{$i} {
-    @extend .column;
-
-    @include breakpoint-min($tablet + 1) {
-      width: (100% / $grid-size) * $i;
+@for $index from 1 through $column-count {
+  @include breakpoint-min($mobile + 1) {
+    .#{$column-prefix}-md-#{$index} {
+      width : 100% * ($index / $column-count);
     }
   }
+}
 
-  .#{$col-prefix}-md-#{$i} {
-    @extend .column;
-
-    @include breakpoint-min($mobile + 1) {
-      width: (100% / $grid-size) * $i;
+@for $index from 1 through $column-count {
+  @include breakpoint-min($tablet + 1) {
+    .#{$column-prefix}-lg-#{$index} {
+      width : 100% * ($index / $column-count);
     }
-  }
-
-  .#{$col-prefix}-sm-#{$i} {
-    @extend .column;
-
-    width: (100% / $grid-size) * $i;
-  }
-
-  // column offsets
-  .#{$col-prefix}-lg-push-#{$i} {
-    @include breakpoint-min($tablet + 1) {
-      margin-left: (100% / $grid-size) * $i;
-      padding-left: $gutter-size-lg * 3;
-    }
-  }
-
-  .#{$col-prefix}-md-push-#{$i} {
-    @include breakpoint-min($mobile + 1) {
-      margin-left: (100% / $grid-size) * $i;
-      padding-left: $gutter-size-md * 3;
-    }
-  }
-
-  .#{$col-prefix}-sm-push-#{$i} {
-    margin-left: (100% / $grid-size) * $i;
-    padding-left: $gutter-size-sm * 3;
   }
 }
