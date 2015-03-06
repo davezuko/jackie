@@ -13,8 +13,6 @@ html(lang='en')
     link(rel='stylesheet' href=assetFingerprint("css/bundle.css"))
     link(rel='author' content='David Zukowski' href='//zuko.me')
     link(rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
-    link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,700,300,800' rel='stylesheet' type='text/css')
-    link(href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css')
   body
     div.page-container
       block header
@@ -52,4 +50,4 @@ html(lang='en')
                 a(href='//linkedin.com/pub/jacqueline-kutcher/b1/754/2ba')
                   span.sr-only LinkedIn
                   i.fa.fa-linkedin
-    script(src=assetFingerprint('app/app-bundle.js'))
+    script(src=assetFingerprint('app/app-bundle.js') defer)
