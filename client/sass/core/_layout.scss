@@ -30,17 +30,31 @@
   border: 0;
 }
 
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.desktop-only {
+  @include breakpoint($tablet) {
+    display: none;
+  }
+}
+
 .tablet-only {
   display: none;
 
   @include breakpoint($tablet) {
-    display: block;
+    display: initial;
   }
 }
 .mobile-only {
   display: none;
 
   @include breakpoint($mobile) {
-    display: block;
+    display: initial;
   }
 }

@@ -3,6 +3,8 @@
 $hero-vertical-offset: 1em;
 
 .primary-nav {
+  $namespace: &;
+
   display: block;
   width: 100%;
   position: relative;
@@ -20,6 +22,12 @@ $hero-vertical-offset: 1em;
 
   @include breakpoint($nav-mobile-threshold) {
     padding: .75rem 0;
+
+    &.active {
+      #{$namespace}__links {
+        display: block;
+      }
+    }
   }
 
   &__toggle {
@@ -54,7 +62,7 @@ $hero-vertical-offset: 1em;
   text-decoration: none;
 
   &:hover {
-    @include breakpoint-min($tablet + 1) {
+    @include breakpoint-min($nav-mobile-threshold + 1) {
 
       &:not(#{$hero-namespace}__accent) {
         color: $nav-hero-accent-color;
@@ -67,7 +75,7 @@ $hero-vertical-offset: 1em;
     }
   }
 
-  @include breakpoint($tablet) {
+  @include breakpoint($nav-mobile-threshold) {
     display: none;
   }
 
@@ -113,6 +121,10 @@ $hero-vertical-offset: 1em;
       color: $nav-link-color;
       text-decoration: none;
     }
+
+    @include breakpoint($nav-mobile-threshold) {
+      padding: .5rem 0;
+    }
   }
 
   &:hover,
@@ -120,12 +132,21 @@ $hero-vertical-offset: 1em;
   &:focus {
     #{$item-namespace}__link {
       color: $accent-color;
+
+      @include breakpoint($nav-mobile-threshold) {
+        color: $color-white;
+        background: $accent-color;
+      }
     }
 
     #{$item-namespace}__accent {
       opacity: 1;
       background: $accent-color;
       transform: translateY(2px);
+
+      @include breakpoint($nav-mobile-threshold) {
+        display: none;
+      }
     }
   }
 
@@ -142,15 +163,12 @@ $hero-vertical-offset: 1em;
   }
 
   @include breakpoint($nav-mobile-threshold) {
-    padding: .5rem 0;
+    display: block;
+    float: none;
+    padding: 0;
     font-size: 1rem;
     font-weight: 300;
     text-transform: uppercase;
     text-align: center;
-
-    &:hover {
-      background: $color-blue;
-      color: #fff;
-    }
   }
 }

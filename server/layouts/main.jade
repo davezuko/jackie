@@ -1,5 +1,5 @@
-mixin nav-item(name, route, hideInDesktop)
-  - var classes = [name === active ? 'active' : '', hideInDesktop ? 'tablet-only' : ''];
+mixin nav-item(name, route, hamburgerOnly)
+  - var classes = [name === active ? 'active' : '', hamburgerOnly ? 'mobile-only' : ''];
   li.primary-nav__item(class=classes)
     a.primary-nav__item__link(href="#{route}")=name
     span.primary-nav__item__accent
@@ -14,15 +14,19 @@ html(lang='en')
     link(rel='stylesheet' href=assetFingerprint("css/bundle.css"))
     link(rel='author' content='David Zukowski' href='//zuko.me')
     link(rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+    link(rel='shortcut icon' href='img/favicon.ico')
   body
     div.page-container
       block header
       nav.primary-nav
         div.content-container.clearfix
           a(href='/').primary-nav__hero
-            span Jackie
-            spab.primary-nav__hero__accent  |&nbsp;
-            span Kutcher
+            div
+              span.desktop-only Jackie
+              span.tablet-only J
+              span.primary-nav__hero__accent  |&nbsp;
+              span.desktop-only Kutcher
+              span.tablet-only K
           a.primary-nav__toggle
             i.fa.fa-bars
           ul.primary-nav__links.list--unstyled
