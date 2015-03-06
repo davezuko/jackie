@@ -35,7 +35,6 @@ config.set('client_base',   path(config.get('base'), 'client'));
 config.set('client_src',    path(config.get('client_base')));
 config.set('client_dest',   path(config.get('base'), 'dist', 'client'));
 config.set('client_reload', undefined); // livereload port
-config.set('client_buster', path(config.get('client_dest'), 'busters.json'));
 
 // --------------------------
 // Client Application
@@ -76,7 +75,7 @@ config.set('server_nodemon', {
 // Sass
 // --------------------------
 config.set('sass_src',    path(config.get('client_src'), 'sass'));
-config.set('sass_entry',  path(config.get('sass_src'), 'main.scss'));
+config.set('sass_entry',  path(config.get('sass_src'), 'bundle.scss'));
 config.set('sass_dest',   path(config.get('client_dest'), 'css'));
 config.set('sass_prefix', ['last 2 versions', '> 2%']);
 config.set('sass_minify', {

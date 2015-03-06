@@ -7,8 +7,9 @@ module.exports = function defaultTask (common, config, plugins) {
     // done...
   });
 
-  gulp.task('dev', ['client:watch', 'server:watch'], function () {
-    // done...
+  // Need to make sure favicon has been moved to dist before running server
+  gulp.task('dev', ['img'], function () {
+    gulp.start('client:watch', 'server:watch');
   });
 
   gulp.task('deploy', ['build'], function () {

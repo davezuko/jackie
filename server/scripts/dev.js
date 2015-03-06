@@ -1,5 +1,5 @@
 'use strict';
 
-let app = require('../index');
-app.setPort(2000);
-app.start();
+require('../index')
+  .setPort(2000)
+  .start();

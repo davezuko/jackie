@@ -18,7 +18,7 @@ const app    = express();
 const config = require('./config');
 let server;
 
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(`${config.get('client_dest')}/img/favicon.ico`));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -73,6 +73,7 @@ app.setPort = function (override) {
     app.get('port') || DEFAULT_PORT : override;
 
   app.set('port', port);
+  return app;
 }
 
 app.start = function () {

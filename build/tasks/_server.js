@@ -2,11 +2,10 @@
 const gulp = require('gulp');
 
 module.exports = function (common, config, plugins) {
-  let app = require(config.get('server_base'));
-  let server;
 
   gulp.task('server', function () {
-    server = app.start();
+    let app = require(config.get('server_base'));
+    app.start();
   });
 
   gulp.task('server:watch', function () {

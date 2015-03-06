@@ -55,9 +55,8 @@ module.exports = function (common, config, plugins) {
          common.log(err.message);
          this.emit('end');
       })
-      .on('end', function (file) {
+      .on('end', function () {
         common.log(`Bundle finished after ${tracker()} ms.`);
-        console.log(arguments);
         callback && callback();
       })
       .pipe(source(config.get('app_dist')))
