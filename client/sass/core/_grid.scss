@@ -1,19 +1,46 @@
 @import '../base/base';
 
-// TODO: add gutters?
-
-$grid-size: 12 !default;
 $col-prefix: 'col' !default;
+$grid-size: 12 !default;
+$gutter-size-lg: 15px;
+$gutter-size-md: 10px;
+$gutter-size-sm: 8px;
 
 .row {
   @extend .clearfix;
 
+  width: 100%;
+  box-sizing: content-box;
   position: relative;
+  padding: 0 $gutter-size-sm;
+  margin-left: -$gutter-size-sm;
+
+  @include breakpoint-min($mobile + 1) {
+    padding: 0 $gutter-size-md;
+    margin-left: -$gutter-size-md;
+  }
+
+  @include breakpoint-min($tablet + 1) {
+    padding: 0 $gutter-size-lg;
+    margin-left: -$gutter-size-lg;
+  }
 }
 
 .column {
+  box-sizing: content-box;
   position: relative;
+  width: 100%;
   float: left;
+
+  padding: 0 $gutter-size-sm;
+
+  @include breakpoint-min($mobile + 1) {
+    padding: 0 $gutter-size-md;
+  }
+
+  @include breakpoint-min($tablet + 1) {
+    padding: 0 $gutter-size-lg;
+  }
 }
 
 @for $i from 1 through $grid-size {
@@ -49,16 +76,19 @@ $col-prefix: 'col' !default;
   .#{$col-prefix}-lg-push-#{$i} {
     @include breakpoint-min($tablet + 1) {
       margin-left: (100% / $grid-size) * $i;
+      padding-left: $gutter-size-lg * 3;
     }
   }
 
   .#{$col-prefix}-md-push-#{$i} {
     @include breakpoint-min($mobile + 1) {
       margin-left: (100% / $grid-size) * $i;
+      padding-left: $gutter-size-md * 3;
     }
   }
 
   .#{$col-prefix}-sm-push-#{$i} {
     margin-left: (100% / $grid-size) * $i;
+    padding-left: $gutter-size-sm * 3;
   }
 }

@@ -5,15 +5,17 @@ $form-border: 1px solid tint($color-black, 85%);
 .form {
   @extend .clearfix;
 
-
   position: relative;
   background: none;
-  // background: tint($color-black, 99%);
   padding: 1rem 1.5rem;
   border: $form-border;
   border-radius: 5px;
 
-  .message-body {
+  .textbox__container {
+
+  }
+
+  .textbox__content {
     display: block;
     width: 100%;
     border: $form-border;
@@ -24,8 +26,4 @@ $form-border: 1px solid tint($color-black, 85%);
   font-family: $font-heading;
   border: $form-border;
   display: block;
-}
-
-.button {
-
 }

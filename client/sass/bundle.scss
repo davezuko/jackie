@@ -11,12 +11,13 @@
 @import 'core/grid';
 
 // components
-@import 'components/view';
+@import 'components/buttons';
 @import 'components/footer';
-@import 'components/form';
 @import 'components/header';
 @import 'components/headings';
+@import 'components/form';
 @import 'components/primary-nav';
+@import 'components/view';
 
-// sections
-@import 'sections/contact';
+// view-specific styles
+@import 'views/contact';
