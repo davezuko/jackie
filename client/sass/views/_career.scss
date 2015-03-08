@@ -1,6 +1,6 @@
 @import '../base/base';
 
-$content-vertical-offset: 1rem;
+$content-vertical-offset: 1.5rem;
 $border: 1px solid rgb(200,200,200);
 
 .view__career {
@@ -24,7 +24,7 @@ $border: 1px solid rgb(200,200,200);
   }
 
   &__content {
-    padding: 0 0 2rem;
+    padding: 0 0 1rem 1rem;
   }
 
   &__heading {
@@ -42,10 +42,10 @@ $border: 1px solid rgb(200,200,200);
 }
 
 .flag {
-  $bottom-margin: 1rem;
-  $vertical-padding: .4rem;
-
   $font-size: .75rem;
+  $line-height: 2 * ($font-size * 1.5);
+  $bottom-margin: 1rem;
+
   $color: $color-white;
   $background: rgb(190,190,190);
   $accent-background: $color-blue;
@@ -53,16 +53,17 @@ $border: 1px solid rgb(200,200,200);
   position: relative;
   width: 80%;
   margin-bottom: $bottom-margin;
-  padding: $vertical-padding 1rem;
+  padding: 0 1rem;
   background: $background;
   color: $color;
   font-size: $font-size;
+  line-height: $line-height;
 
   &:after {
-    $size: $font-size + ($vertical-padding * .475);
+    $size: $line-height / 2;
     content: '';
     position: absolute;
-    right: -.85rem;
+    right: -1.15rem;
     top: 0;
     border-top: $size solid transparent;
     border-left: $size solid $background;
@@ -71,8 +72,9 @@ $border: 1px solid rgb(200,200,200);
 
 
   &--accent {
-    background: $accent-background;
     margin-bottom: 2.5 * $bottom-margin;
+    font-weight: bold;
+    background: $accent-background;
 
     &:after {
       border-left-color: $accent-background;
