@@ -1,9 +1,10 @@
 extends ../../layouts/main.jade
 
-mixin gallery-item(src, title)
-  span.title= title
-  div.img-container
-    img(src=src alt=title)
+mixin gallery-item(src, title, id)
+  div.gallery__item(id=id)
+    span.gallery__item__title= title
+    div.gallery__item__img-container
+      img(src=src alt=title)
 
 block view-content
   div.content-container
@@ -11,5 +12,7 @@ block view-content
       span.copy Personal Gallery
     div.row
       ul.gallery-items.list--unstyled
-        li.col-sm-4
-          +gallery-item('', 'Test Item')
+        - for (var i=1; i<=12; i++)
+          - var padded = i < 10 ? "0" + i : i;
+          li.col-sm-4
+            +gallery-item('img/gallery/social-work-club-' + padded + '.jpg', 'Test Item', 'social-work-' + padded)

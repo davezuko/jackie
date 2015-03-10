@@ -1,8 +1,7 @@
 mixin nav-item(name, route, hamburgerOnly)
   - var classes = [name === active ? 'active' : '', hamburgerOnly ? 'mobile-only' : ''];
   li.primary-nav__item(class=classes)
-    a.primary-nav__item__link(href="#{route}")=name
-    span.primary-nav__item__accent
+    a.primary-nav__item__link.link--animate(href="#{route}")=name
 
 doctype html
 html(lang='en')
@@ -41,13 +40,17 @@ html(lang='en')
       footer
         div.content-container
           div.contact
+            div.copy
+              p Want to get in touch? Check out my 
+                a.link(href='/contact') contact page
+                |  or find me here:
             ul.contact__links
-              li.email
-                a(href='mailto:test@dev.com')
-                  span.sr-only Email
-                  i.fa.fa-envelope-o
               li.linkedin
                 a(href='//linkedin.com/pub/jacqueline-kutcher/b1/754/2ba')
                   span.sr-only LinkedIn
                   i.fa.fa-linkedin
+              li.email
+                a(href='mailto:test@dev.com')
+                  span.sr-only Email
+                  i.fa.fa-envelope-o
     script(src=assetFingerprint('app/app-bundle.js') defer)

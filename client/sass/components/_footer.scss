@@ -3,20 +3,24 @@
 footer {
   @extend .clearfix;
 
-  padding: 1.5rem 0;
+  padding: 2rem 0 4rem;
 
   border-top: 2px solid $color-blue;
   background: rgb(40,40,40);
 
   .contact {
-    @extend .clearfix;
+    text-align: center;
 
-    position: relative;
-    float: right;
+    .copy {
+      color: tint($color-teal--light, 50%);
+      font-weight: 100;
+    }
   }
 
   .contact__links {
     @extend .clearfix;
+
+    display: inline-block;
 
     li {
       float: left;

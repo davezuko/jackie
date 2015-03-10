@@ -21,7 +21,7 @@ $font-copy: 'Open Sans', sans-serif;
 $base-font-size: 1em;
 
 $copy-color: $color-teal--dark;
-$heading-color: $color-teal--dark;
+$heading-color: shade($color-teal--dark, 15%);
 
 // ------------------------------------
 // Primary Navigation
@@ -31,7 +31,7 @@ $nav-background-color: $color-white;
 $nav-border: 1px solid transparentize($color-black, .75);
 
 $nav-hero-size: 1.5rem;
-$nav-hero-color: $heading-color;
+$nav-hero-color: $color-teal--dark;
 $nav-hero-accent-color: $color-blue;
 
 $nav-mobile-threshold: $mobile;

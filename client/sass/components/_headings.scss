@@ -6,14 +6,17 @@
 }
 
 .heading--section {
+  $accent-color: tint($color-teal--dark, 50%);
+
   @extend .heading;
 
   display: block;
   position: relative;
-  margin: 1.5rem 0 1rem;
+  margin: 1.75rem 0;
 
+  font-size: 2.35rem;
   text-align: center;
-  font-weight: 500;
+  font-weight: 300;
 
   .copy {
     position: relative;
@@ -27,7 +30,7 @@
       content: '';
       position: absolute;
       height: 1px;
-      background: $color-blue;
+      background: $accent-color;
       width: $width;
       left: -(100% - ($width / 4));
       top: 50%;
@@ -48,7 +51,7 @@
         content: '';
         position: absolute;
         height: 1px;
-        background: $color-blue;
+        background: $accent-color;
         width: 200%;;
         left: -50%;
         bottom: 0;

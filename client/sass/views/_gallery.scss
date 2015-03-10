@@ -1,0 +1,151 @@
+@import '../base/base';
+
+// TODO: better way of positioning images
+.gallery__item {
+  $namespace: &;
+  $width: 100%;
+
+  @mixin image-filter($pct) {
+    filter: grayscale($pct);
+  }
+
+  position: relative;
+  width: $width;
+  height: 0;
+  margin-bottom: 12px;
+  padding-bottom: $width;
+  overflow: hidden;
+
+  &__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 0;
+    z-index: 2;
+    opacity: 1;
+    transform: translateY(6rem);
+    transition: all .3s;
+
+    color: $color-white;
+    font-family: $font-heading;
+    font-weight: 300;
+    text-align: center;
+    background: $color-blue;
+  }
+
+  &__img-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    img {
+      @include image-filter(75%);
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: auto;
+      transform: translateY(-25%);
+      transition: .3s all;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    #{$namespace}__title {
+      transform: translateY(0);
+    }
+
+    #{$namespace}__img-container {
+
+      img {
+        @include image-filter(0%);
+      }
+    }
+  }
+}
+
+// ---------------------------------------------
+// Item-Specific Cropping
+// ---------------------------------------------
+// TODO: better way to manage this....
+// TODO: redo this whole thing.
+
+[id='social-work-01'] {
+  img {
+    width: 200%;
+    top: 100px;
+    left: -150px;
+  }
+}
+
+[id='social-work-02'] {
+  img {
+    top: 50px;
+    left: -100px;
+  }
+}
+
+[id='social-work-03'] {
+  img {
+    left: -200px;
+  }
+}
+
+[id='social-work-04'] {
+  img {
+    left: -100px;
+  }
+}
+
+[id='social-work-05'] {
+  img {
+    width: 250%;
+    left: -300px;
+  }
+}
+
+[id='social-work-06'] {
+  img {
+    width: 200%;
+    left: -200px;
+  }
+}
+
+[id='social-work-07'] {
+  img {
+    left: -90px;
+  }
+}
+
+[id='social-work-08'] {
+  img {
+    width: 300%;
+    top: 90px;
+    left: -45px;
+  }
+}
+
+
+[id='social-work-09'] {
+  img {
+    top: 25px;
+    left: -220px;
+  }
+}
+
+[id='social-work-10'] {
+  img {
+    top: 25px;
+    left: -220px;
+  }
+}
+
+[id='social-work-11'] {
+  img {
+    top: 50px;
+    left: -300px;
+  }
+}
