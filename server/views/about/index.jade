@@ -1,12 +1,31 @@
 extends ../../layouts/main.jade
 
+mixin achievement-item(copy)
+  li.achievement__item
+    div.content-container
+      span.achievement__item__copy=copy
+
 block view-content
   div.content-container
-    div.body-copy
-      p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce feugiat id purus non lobortis. Aenean non enim interdum, accumsan nulla nec, facilisis est. Praesent pulvinar mauris vel turpis rutrum tristique. Donec ac libero vitae odio elementum iaculis. Sed iaculis sagittis tortor. Fusce posuere et sem ut volutpat. Cras finibus lobortis ante, sit amet vulputate tellus. Sed suscipit pharetra turpis ac sollicitudin. Integer scelerisque id nisl id fermentum. Fusce condimentum quam pellentesque lectus porttitor, ut placerat justo consequat. Curabitur quis finibus ipsum, vel molestie erat.
-      p Sed quam ipsum, semper sit amet vestibulum vitae, dapibus vitae lorem. Nullam ultricies volutpat metus a tincidunt. Fusce cursus sem vel ex dignissim luctus. Sed urna nisl, tristique quis interdum id, placerat ac nulla. Nam tristique risus ac risus commodo, venenatis condimentum nisi sagittis. Nam id feugiat enim, at dignissim nunc. Ut convallis nulla quis tellus euismod, sit amet placerat ligula sollicitudin. Nunc dapibus, ligula ac molestie dignissim, leo erat auctor odio, ac maximus magna magna ut eros. Vestibulum vitae pharetra quam, vestibulum consectetur sem.
-      p Sed eget consequat lorem, ac tempus erat. Donec vitae pretium justo. Donec tristique, nunc ac vulputate condimentum, risus felis tristique tellus, quis ullamcorper libero sem a est. Etiam id tristique purus, vel cursus justo. Vivamus semper vitae turpis vel volutpat. Duis hendrerit convallis hendrerit. Ut a velit eu dui rhoncus consequat et non orci.
-      p Etiam eu suscipit ante, sed vestibulum arcu. Duis in nisi vulputate, facilisis mauris non, sagittis sem. Integer facilisis nisi id sapien blandit dignissim. Mauris a ante at ipsum egestas tempor. Nunc vel urna porttitor, aliquet metus ac, consequat diam. Integer at auctor purus, et volutpat nisi. Mauris dictum diam non enim volutpat, vitae lobortis dolor tempus. Maecenas ultrices purus ac ullamcorper volutpat. Aenean nec eros ac sapien consequat mollis.
-      p Sed quam ipsum, semper sit amet vestibulum vitae, dapibus vitae lorem. Nullam ultricies volutpat metus a tincidunt. Fusce cursus sem vel ex dignissim luctus. Sed urna nisl, tristique quis interdum id, placerat ac nulla. Nam tristique risus ac risus commodo, venenatis condimentum nisi sagittis. Nam id feugiat enim, at dignissim nunc. Ut convallis nulla quis tellus euismod, sit amet placerat ligula sollicitudin. Nunc dapibus, ligula ac molestie dignissim, leo erat auctor odio, ac maximus magna magna ut eros. Vestibulum vitae pharetra quam, vestibulum consectetur sem.
-      p Sed eget consequat lorem, ac tempus erat. Donec vitae pretium justo. Donec tristique, nunc ac vulputate condimentum, risus felis tristique tellus, quis ullamcorper libero sem a est. Etiam id tristique purus, vel cursus justo. Vivamus semper vitae turpis vel volutpat. Duis hendrerit convallis hendrerit. Ut a velit eu dui rhoncus consequat et non orci.
-      p Etiam eu suscipit ante, sed vestibulum arcu. Duis in nisi vulputate, facilisis mauris non, sagittis sem. Integer facilisis nisi id sapien blandit dignissim. Mauris a ante at ipsum egestas tempor. Nunc vel urna porttitor, aliquet metus ac, consequat diam. Integer at auctor purus, et volutpat nisi. Mauris dictum diam non enim volutpat, vitae lobortis dolor tempus. Maecenas ultrices purus ac ullamcorper volutpat. Aenean nec eros ac sapien consequat mollis.
+    h1.heading--section
+      span.copy About Me
+    div.copy-container
+      p Morbi vulputate, est vitae mollis lobortis, eros nunc dictum enim, porta bibendum tortor purus vitae libero. Phasellus pharetra luctus viverra. Maecenas pharetra imperdiet nisl in pharetra. Pellentesque pellentesque eleifend felis. Maecenas elementum porta nulla in gravida. Vestibulum lacinia vel enim in lobortis. Mauris volutpat, mauris vel tempor dictum, nibh erat varius ipsum, nec gravida ligula magna eget tortor. Donec ac condimentum metus, sit amet viverra quam. Vivamus faucibus purus sit amet sapien viverra, in fringilla massa porttitor. Phasellus egestas metus non dui hendrerit, sed tincidunt velit aliquam.
+  div.achievements-container
+    h2.heading--secondary
+      span.copy Achievements
+    ul.achievements__list
+      +achievement-item('President of Oakland University’s Social Work Club')
+      +achievement-item('Active member of Phi Alpha National Social Work Honor Society')
+      +achievement-item('Recipient of Oakland University’s First Year Achievement Scholarship')
+      +achievement-item('Recipient of Best Buy Scholarship for volunteer experience')
+      +achievement-item('Accepted into Western Michigan’s Advanced Standing Master’s Degree Program')
+      +achievement-item('Raised over $500 for Making Strides 5K in Rochester, MI in 2015')
+      +achievement-item('Raised over $200 for Relay for Life at Oakland University in 2014')
+      +achievement-item('Collaborated with Oakland University’s Phi Alpha Honor Society to collect cans for a local homeless shelter')
+      +achievement-item('Organized Social Work Club events with other Eboard members')
+      +achievement-item('Hosted monthly club meetings and arranging engaging ice breakers')
+      +achievement-item('Executed a Penny Drive fundraiser between the Juniors and Seniors of the Oakland University Social Work Program for the Susan G Koman Foundation')
+      +achievement-item('Arranged a bake sale and Bowling Fundraiser to raise money and awareness for the American Heart Association')
+      +achievement-item('Participated in a Phi Alpha Honor Society Can Drive to raise money for Teach4Detroit')
+      +achievement-item('Mentor of a Junior social work student through Phi Alpha Honor Society at Oakland University')

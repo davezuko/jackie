@@ -19,9 +19,11 @@
 @import 'components/img';
 @import 'components/links';
 @import 'components/primary-nav';
+@import 'components/table';
 @import 'components/view';
 
 // view-specific styles
+@import 'views/achievements';
 @import 'views/career';
 @import 'views/contact';
 @import 'views/gallery';

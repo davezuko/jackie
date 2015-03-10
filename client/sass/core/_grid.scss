@@ -12,9 +12,10 @@ $half-gutter: $gutter-size / 2;
 .row {
   @extend .clearfix;
 
+  position: relative;
   width : 100%;
   margin-left  : -$half-gutter;
-  margin-right : -$half-gutter;
+  right: -$half-gutter;
 }
 
 .#{$column-prefix} {

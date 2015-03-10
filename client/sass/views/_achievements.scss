@@ -1,0 +1,31 @@
+@import '../base/base';
+
+.achievements__list {
+  margin: 0 0 1.5rem;
+
+
+
+}
+
+.achievement__item {
+  margin: 0 0 .3rem;
+
+  &:nth-of-type(even) {
+    // background: tint($color-blue, 97%);
+  }
+}
+
+.achievement__item__copy {
+
+  &:before {
+    content: '\f005';
+    margin-right: .75rem;
+    font-family: FontAwesome;
+    color: $color-blue;
+  }
+
+  &.accent {
+    color: $color-blue;
+    font-weight: bold;
+  }
+}
