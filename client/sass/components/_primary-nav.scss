@@ -109,6 +109,10 @@ $hero-vertical-offset: 1em;
   padding: 0;
   transition: all $global-transition-speed;
 
+  &:last-of-type {
+    margin-right: 0;
+  }
+  
   &__link {
     display: block;
     height: 100%;

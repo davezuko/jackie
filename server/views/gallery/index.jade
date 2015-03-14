@@ -3,8 +3,7 @@ extends ../../layouts/main.jade
 mixin gallery-item(src, title, id)
   div.gallery__item(id=id)
     span.gallery__item__title= title
-    div.gallery__item__img-container
-      img(src=src alt=title)
+    div.gallery__item__img(style='background-image: url(#{src})' title=title)
 
 block view-content
   div.content-container

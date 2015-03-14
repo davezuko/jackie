@@ -18,20 +18,22 @@ html(lang='en')
     div.page-container
       block header
       nav.primary-nav
-        div.content-container.clearfix
-          a(href='/').primary-nav__hero
-            div
-              span.desktop-only Jackie
-              span.tablet-only J
-              span.primary-nav__hero__accent  |&nbsp;
-              span.desktop-only Kutcher
-              span.tablet-only K
-          a.primary-nav__toggle
-            i.fa.fa-bars
-          ul.primary-nav__links.list--unstyled
-            +nav-item('Home', '/', true)
-            each item in navigation
-              +nav-item(item.name, item.route)
+        div.content-container
+          div.row
+            div.col-sm-12.clearfix
+              a(href='/').primary-nav__hero
+                div
+                  span.desktop-only Jackie
+                  span.tablet-only J
+                  span.primary-nav__hero__accent  |&nbsp;
+                  span.desktop-only Kutcher
+                  span.tablet-only K
+              a.primary-nav__toggle
+                i.fa.fa-bars
+              ul.primary-nav__links.list--unstyled
+                +nav-item('Home', '/', true)
+                each item in navigation
+                  +nav-item(item.name, item.route)
       div.view-container
         if heading
           h1.heading--section#heading
