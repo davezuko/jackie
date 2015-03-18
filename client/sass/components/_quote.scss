@@ -4,7 +4,7 @@
 .quote {
   @extend .clearfix;
 
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   margin-bottom: 1.5rem;
 }
 
@@ -16,6 +16,8 @@
 .quote-attribution {
   position: relative;
   float: right;
+  margin-right: 12.5%;
+  font-size: .95rem;
   // width: 100%;
 
   &:before {
@@ -28,12 +30,12 @@
     background: $color-blue;
     transform: skew(-10deg, 0);
     z-index: -1;
-    opacity: .5;
+    opacity: 1;
   }
 
   .copy {
     position: relative;
-    top: .35rem;
+    top: .25rem;
     color: $color-white;
 
     &:before {

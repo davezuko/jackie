@@ -4,6 +4,7 @@
 const NAV_ITEMS = [
   'About',
   'BSW Education',
+  'Goals',
   'Career',
   'Gallery',
   'Contact'
@@ -42,6 +43,12 @@ module.exports = function (app, config) {
   app.get('/bsw-education', function (req, res) {
     res.render('bsw-education/index', {
       title : 'BSW Education'
+    });
+  });
+
+  app.get('/goals', function (req, res) {
+    res.render('goals/index', {
+      title : 'Goals'
     });
   });
 
