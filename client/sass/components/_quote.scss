@@ -1,0 +1,43 @@
+@import '../base/base';
+
+
+.quote {
+  @extend .clearfix;
+
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.quote-copy {
+  position: relative;
+  text-align: center;
+}
+
+.quote-attribution {
+  position: relative;
+  float: right;
+  // width: 100%;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1rem;
+    height: 150%;
+    width: 5000px;
+    background: $color-blue;
+    transform: skew(-10deg, 0);
+    z-index: -1;
+    opacity: .5;
+  }
+
+  .copy {
+    position: relative;
+    top: .35rem;
+    color: $color-white;
+
+    &:before {
+      content: '- ';
+    }
+  }
+}
