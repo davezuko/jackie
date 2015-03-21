@@ -4,42 +4,43 @@
 .quote {
   @extend .clearfix;
 
+  // width: 25%;
+  // float: left;
+  // margin: 0 3rem 1rem 0;
   font-size: 1.15rem;
-  margin-bottom: 1.5rem;
+  color: tint($color-teal--dark, 25%);
+
+  &:before,
+  &:after {
+    font-family: FontAwesome;
+    color: $color-blue;
+  }
+
+  &:before {
+    float: left;
+    content: '\f10d';
+    margin-right: 1rem;
+  }
 }
 
 .quote-copy {
   position: relative;
-  text-align: center;
+  margin: 0;
 }
 
 .quote-attribution {
-  position: relative;
   float: right;
-  margin-right: 12.5%;
-  font-size: .95rem;
-  // width: 100%;
+  margin-top: .5rem;
+  color: $color-teal--dark;
 
   &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -1rem;
-    height: 150%;
-    width: 5000px;
-    background: $color-blue;
-    transform: skew(-10deg, 0);
-    z-index: -1;
-    opacity: 1;
+    content: '- ';
   }
 
-  .copy {
-    position: relative;
-    top: .25rem;
-    color: $color-white;
-
-    &:before {
-      content: '- ';
-    }
+  &:after {
+    content: '\f10e';
+    margin-left: 1rem;
+    font-family: FontAwesome;
+    color: $color-blue;
   }
 }
