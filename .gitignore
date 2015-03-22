@@ -5,6 +5,7 @@ dist
 # Non-development configs
 **/config/*
 !**/config/development.js
+.ignore.js
 
 # Sublime
 *.tmlanguage.cache

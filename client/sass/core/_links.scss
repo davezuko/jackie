@@ -17,6 +17,7 @@
     transition: all $global-transition-speed;
   }
 
+  &:focus,
   &:hover {
     cursor: pointer;
 

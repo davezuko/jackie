@@ -7,22 +7,24 @@
 // core styles
 @import 'core/resets';
 @import 'core/typography';
-@import 'core/layout';
 @import 'core/grid';
+@import 'core/layout';
+
+@import 'core/buttons';
+// @import 'core/form';
+@import 'core/headings';
+@import 'core/images';
+@import 'core/links';
+@import 'core/view';
+// @import 'core/table';
+
 
 // components
 @import 'components/achievement';
-@import 'components/buttons';
 @import 'components/footer';
-@import 'components/form';
 @import 'components/header';
-@import 'components/headings';
-@import 'components/img';
-@import 'components/links';
-@import 'components/primary-nav';
+@import 'components/navigation';
 @import 'components/quote';
-@import 'components/table';
-@import 'components/view';
 
 // view-specific styles
 @import 'views/resume';

@@ -32,5 +32,10 @@ module.exports = function (base) {
   // ----------------------------------
   config.set('trust_proxy', true); // trust x-forwarded-* headers
 
+  // ----------------------------------
+  // Mailer
+  // ----------------------------------
+  config.set('mailer', require('./mailer.js'));
+
   return config;
 }

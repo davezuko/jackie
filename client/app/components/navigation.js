@@ -1,4 +1,4 @@
-const $ = require('./dom');
+const $ = require('../lib/dom');
 
 let _$node;
 let _$toggle;

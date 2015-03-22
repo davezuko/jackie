@@ -1,0 +1,17 @@
+@import '../base/base';
+
+.image-container--sidebar {
+  max-width: 100%;
+
+  img {
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .caption {
+    display: block;
+    width: 100%;
+    color: tint($color-teal--dark, 20%);
+    text-align: center;
+  }
+}
