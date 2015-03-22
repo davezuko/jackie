@@ -1,0 +1,39 @@
+extends ../../layouts/main.jade
+
+mixin achievement-item(copy)
+  li.achievement__item
+    span.achievement__item__copy=copy
+      
+block view-content
+  div.content-container
+    div.row
+      div.col-sm-12.col-md-12
+        h2.heading--secondary
+          span.copy Educational Goals
+        div.copy-container
+          p I will be attending Western Michigan University starting in July 2015. My goals for my education are to graduate with my MSW degree with a concentration in Policy, Planning, and Administration. Another goal I have is to get an internship working with women, immigrants, or low-income families. I also want to stay an active member of Phi Alpha Social Work Honor Society at Western Michigan University. Another goal of mine is to learn more about victim blaming and slut shaming through reading and volunteering at a local sexual assault shelter or agency.
+      div.col-sm-12.col-md-12
+        h2.heading--secondary
+          span.copy Career Goals
+        div.copy-container
+          p My goals for my career as a social worker are to obtain a job in North Carolina or Georgia at a social justice agency. I want to work in an agency that provides women and men of domestic violence and sexual assault with resources and advocacy. A goal of mine is to write grants that can help fund programs that proactively address the issue of sexual assault. Another career goal of mine is to work on a political campaign that promotes positive social change. I eventually want to run for office with social work values and  ethics close to my heart. I want to make changes in our prison system, criminal justice system, and welfare system.
+
+    div.row
+      div.achievements-container
+        h2.heading--secondary
+          span.copy Achievements
+        ul.achievements__list.col-sm-12
+          +achievement-item('President of Oakland University’s Social Work Club')
+          +achievement-item('Active member of Phi Alpha National Social Work Honor Society')
+          +achievement-item('Recipient of Oakland University’s First Year Achievement Scholarship')
+          +achievement-item('Recipient of Best Buy Scholarship for volunteer experience')
+          +achievement-item('Accepted into Western Michigan’s Advanced Standing Master’s Degree Program')
+          +achievement-item('Raised over $500 for Making Strides 5K in Rochester, MI in 2015')
+          +achievement-item('Raised over $200 for Relay for Life at Oakland University in 2014')
+          +achievement-item('Collaborated with Oakland University’s Phi Alpha Honor Society to collect cans for a local homeless shelter')
+          +achievement-item('Organized Social Work Club events with other Eboard members')
+          +achievement-item('Hosted monthly club meetings and arranging engaging ice breakers')
+          +achievement-item('Executed a Penny Drive fundraiser between the Juniors and Seniors of the Oakland University Social Work Program for the Susan G Koman Foundation')
+          +achievement-item('Arranged a bake sale and Bowling Fundraiser to raise money and awareness for the American Heart Association')
+          +achievement-item('Participated in a Phi Alpha Honor Society Can Drive to raise money for Teach4Detroit')
+          +achievement-item('Mentor of a Junior social work student through Phi Alpha Honor Society at Oakland University')

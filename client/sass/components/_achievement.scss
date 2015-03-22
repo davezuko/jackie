@@ -2,30 +2,21 @@
 
 .achievements__list {
   margin: 0 0 1.5rem;
-
-
-
 }
 
 .achievement__item {
   margin: 0 0 .3rem;
-
-  &:nth-of-type(even) {
-    // background: tint($color-blue, 97%);
-  }
-}
-
-.achievement__item__copy {
+  padding-left: 2.5rem;
 
   &:before {
+    position: absolute;
     content: '\f005';
-    margin-right: .75rem;
+    left: 1rem;
     font-family: FontAwesome;
     color: $color-blue;
   }
 
-  &.accent {
-    color: $color-blue;
-    font-weight: bold;
+  &:nth-of-type(even) {
+    // background: tint($color-blue, 97%);
   }
 }

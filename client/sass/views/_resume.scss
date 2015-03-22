@@ -3,7 +3,7 @@
 $content-vertical-offset: 1.5rem;
 $border: 1px solid rgb(200,200,200);
 
-.view__career {
+.view__resume {
   margin-bottom: 2rem;
 
   // TODO: standardize this
@@ -12,7 +12,7 @@ $border: 1px solid rgb(200,200,200);
   }
 }
 
-.career-item {
+.resume-item {
   @extend .clearfix;
 
   position: relative;

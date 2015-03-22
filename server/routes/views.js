@@ -2,10 +2,9 @@
 
 // TODO: these could be dynamically pulled in from /views
 const NAV_ITEMS = [
-  'About',
-  'BSW Education',
-  'Goals',
-  'Career',
+  'BSW',
+  'Resume',
+  'Reflection',
   'Gallery',
   'Contact'
 ].map(function (item) {
@@ -34,21 +33,15 @@ module.exports = function (app, config) {
     });
   });
 
-  app.get('/about', function (req, res) {
-    res.render('about/index', {
-      title : 'About'
+  app.get('/bsw', function (req, res) {
+    res.render('bsw/index', {
+      title : 'Bachelor\'s of Social Work'
     });
   });
 
-  app.get('/bsw-education', function (req, res) {
-    res.render('bsw-education/index', {
-      title : 'BSW Education'
-    });
-  });
-
-  app.get('/goals', function (req, res) {
-    res.render('goals/index', {
-      title : 'Goals'
+  app.get('/reflection', function (req, res) {
+    res.render('reflection/index', {
+      title : 'Reflection'
     });
   });
 
@@ -66,10 +59,10 @@ module.exports = function (app, config) {
   });
 
   // ----------------------------------
-  // Career Page
+  // Resume Page
   // ----------------------------------
-  app.get('/career', function (req, res) {
-    res.locals.careerItems = [
+  app.get('/resume', function (req, res) {
+    res.locals.resumeItems = [
       {
         date   : 'Nov. 25, 2014',
         labels : [
@@ -106,8 +99,8 @@ module.exports = function (app, config) {
       }
     ];
 
-    res.render('career/index', {
-      title : 'Career'
+    res.render('resume/index', {
+      title : 'Resume'
     });
   });
 };

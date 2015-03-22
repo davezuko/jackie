@@ -11,6 +11,7 @@
 @import 'core/grid';
 
 // components
+@import 'components/achievement';
 @import 'components/buttons';
 @import 'components/footer';
 @import 'components/form';
@@ -24,7 +25,6 @@
 @import 'components/view';
 
 // view-specific styles
-@import 'views/achievements';
-@import 'views/career';
+@import 'views/resume';
 @import 'views/contact';
 @import 'views/gallery';
