@@ -3,11 +3,6 @@
 
 .quote {
   @extend .clearfix;
-
-  // width: 25%;
-  // float: left;
-  // margin: 0 3rem 1rem 0;
-  font-size: 1.15rem;
   color: tint($color-teal--dark, 25%);
 
   &:before,

@@ -19,7 +19,7 @@
 
   &:hover {
     cursor: pointer;
-    
+
     &:after {
       opacity: 1;
       transform: translateY(2px);
@@ -31,4 +31,8 @@
   @extend .link--animate;
 
   color: $color-blue;
+
+  &:visited {
+    color: $color-blue;
+  }
 }
