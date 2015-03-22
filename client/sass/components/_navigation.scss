@@ -2,7 +2,7 @@
 
 $hero-vertical-offset: 1em;
 
-.primary-nav {
+.navigation {
   $namespace: &;
 
   display: block;
@@ -48,7 +48,7 @@ $hero-vertical-offset: 1em;
 // --------------------------------
 // Navigation Hero
 // --------------------------------
-.primary-nav__hero {
+.navigation__hero {
   $hero-namespace: &;
 
   float: left;
@@ -89,7 +89,7 @@ $hero-vertical-offset: 1em;
 // --------------------------------
 // Navigation Links
 // --------------------------------
-.primary-nav__links {
+.navigation__links {
   float: right;
   line-height: $nav-hero-size + ($nav-hero-size / 3);
 
@@ -99,7 +99,7 @@ $hero-vertical-offset: 1em;
   }
 }
 
-.primary-nav__item {
+.navigation__item {
   $item-namespace: &;
   $accent-color: $color-blue;
 

@@ -1,8 +1,8 @@
 require('babelify/polyfill');
 
 // initialze primary navigation
-require('./lib/affix')('.primary-nav', '.view-container');
-require('./components/navigation')('.primary-nav');
+require('./lib/affix')('.navigation', '.view-container');
+require('./components/navigation')('.navigation');
 
 // initialize contact form
 require('./components/contact')('.form--contact');

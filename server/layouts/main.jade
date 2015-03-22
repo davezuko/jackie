@@ -1,7 +1,7 @@
 mixin nav-item(name, route, mobileOnly)
   - var classes = [name === active ? 'active' : '', mobileOnly ? 'mobile-only' : ''];
-  li.primary-nav__item(class=classes)
-    a.primary-nav__item__link.link--animate(href="#{route}")=name
+  li.navigation__item(class=classes)
+    a.navigation__item__link.link--animate(href="#{route}")=name
 
 doctype html
 html(lang='en')
@@ -17,22 +17,22 @@ html(lang='en')
   body
     div.page-container
       block header
-      nav.primary-nav
+      nav.navigation
         div.content-container
           div.row
             div.col-sm-12.clearfix
-              a(href='/').primary-nav__hero
+              a(href='/').navigation__hero
                 div.desktop-only
                   span Jackie&nbsp;
-                  span.primary-nav__hero__accent |&nbsp;
+                  span.navigation__hero__accent |&nbsp;
                   span Kutcher
                 div.tablet-only
                   span J&nbsp;
-                  span.primary-nav__hero__accent |&nbsp;
+                  span.navigation__hero__accent |&nbsp;
                   span K
-              a.primary-nav__toggle
+              a.navigation__toggle
                 i.fa.fa-bars
-              ul.primary-nav__links.list--unstyled
+              ul.navigation__links.list--unstyled
                 +nav-item('Home', '/', true)
                 each item in navigation
                   +nav-item(item.name, item.route)
@@ -43,18 +43,19 @@ html(lang='en')
         block view-content
       footer
         div.content-container
-          div.contact
-            div.copy
-              p Want to get in touch? Check out my 
-                a.link(href='/contact') contact page
-                |  or find me here:
-            ul.contact__links
-              li.linkedin
-                a(href='//linkedin.com/pub/jacqueline-kutcher/b1/754/2ba')
-                  span.sr-only LinkedIn
-                  i.fa.fa-linkedin
-              li.email
-                a(href='mailto:test@dev.com')
-                  span.sr-only Email
-                  i.fa.fa-envelope-o
+          div.row
+            div.col-sm-12.contact
+              div.copy
+                p Want to get in touch? Check out my 
+                  a.link(href='/contact') contact page
+                  |  or find me here:
+              ul.contact__links
+                li.linkedin
+                  a(href='//linkedin.com/pub/jacqueline-kutcher/b1/754/2ba')
+                    span.sr-only LinkedIn
+                    i.fa.fa-linkedin
+                li.email
+                  a(href='mailto:test@dev.com')
+                    span.sr-only Email
+                    i.fa.fa-envelope-o
     script(src=assetFingerprint('app/app-bundle.js') defer)
