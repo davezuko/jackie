@@ -1,0 +1,17 @@
+@import '../base/base';
+
+.sidebar {
+  @extend .col-lg-3;
+  @extend .col-md-5;
+  @extend .col-sm-12;
+}
+
+.content-with-sidebar {
+  @extend .col-lg-9;
+  @extend .col-md-7;
+  @extend .col-sm-12;
+
+  .content {
+    padding: 0 0 0 1rem;
+  }
+}

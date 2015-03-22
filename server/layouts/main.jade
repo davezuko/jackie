@@ -1,5 +1,5 @@
-mixin nav-item(name, route, hamburgerOnly)
-  - var classes = [name === active ? 'active' : '', hamburgerOnly ? 'mobile-only' : ''];
+mixin nav-item(name, route, mobileOnly)
+  - var classes = [name === active ? 'active' : '', mobileOnly ? 'mobile-only' : ''];
   li.primary-nav__item(class=classes)
     a.primary-nav__item__link.link--animate(href="#{route}")=name
 
@@ -22,12 +22,14 @@ html(lang='en')
           div.row
             div.col-sm-12.clearfix
               a(href='/').primary-nav__hero
-                div
-                  span.desktop-only Jackie
-                  span.tablet-only J
-                  span.primary-nav__hero__accent  |&nbsp;
-                  span.desktop-only Kutcher
-                  span.tablet-only K
+                div.desktop-only
+                  span Jackie&nbsp;
+                  span.primary-nav__hero__accent |&nbsp;
+                  span Kutcher
+                div.tablet-only
+                  span J&nbsp;
+                  span.primary-nav__hero__accent |&nbsp;
+                  span K
               a.primary-nav__toggle
                 i.fa.fa-bars
               ul.primary-nav__links.list--unstyled

@@ -13,13 +13,15 @@
   margin: 0 auto;
 
   @include breakpoint($content-width) {
-    padding: 0 2rem;
+    padding: 0 1rem;
+  }
+
+  @include breakpoint($tablet) {
+    padding: 0 .5rem;
   }
 }
 
-.copy-container {
-  padding: 0 2.5%;
-
+article {
   p {
     text-indent: 2.5rem;
 
