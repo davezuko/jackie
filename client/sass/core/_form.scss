@@ -1,0 +1,62 @@
+@import '../base/base';
+
+.input-group {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 1rem;
+
+  label {
+    font-size: .8rem;
+    // margin-left: .85rem;
+  }
+
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+
+    font-family: $font-heading;
+    font-size: 1rem;
+    border: 1px solid tint($color-black, 75%);
+    border-radius: 5px;
+    transition: .25s all;
+
+    &:focus {
+      outline: none;
+      border-color: $color-blue;
+    }
+
+    &:valid {
+      border-color: $color-green;
+    }
+
+    &:invalid {
+      outline: none;
+      // border-color: $color-red;
+    }
+  }
+
+  input {
+    padding: .75rem .5rem .75rem .85rem;
+  }
+
+  textarea {
+    min-height: 210px;
+  }
+}
+
+.input-group--inline {
+  @extend .input-group;
+
+  label {
+    display: inline-block;
+    width: auto;
+  }
+
+  input[type='radio'],
+  input[type='checkbox'] {
+    display: inline-block;
+    width: auto;
+    margin-left: 1rem;
+  }
+}

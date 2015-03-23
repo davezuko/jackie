@@ -1,5 +1,5 @@
 mixin nav-item(name, route, mobileOnly)
-  - var classes = [name === active ? 'active' : '', mobileOnly ? 'mobile-only' : ''];
+  - var classes = [name.toLowerCase() === active ? 'active' : '', mobileOnly ? 'mobile-only' : ''];
   li.navigation__item(class=classes)
     a.navigation__item__link.link--animate(href="#{route}")=name
 

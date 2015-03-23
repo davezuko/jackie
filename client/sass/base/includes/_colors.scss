@@ -8,3 +8,8 @@ $color-white: #fff;
 $color-teal: lighten(#445A64, 15%);
 $color-teal--dark: darken($color-teal, 15%);
 $color-teal--light: lighten($color-teal, 15%);
+
+$color-green: #32E686;
+$color-green--dark: shade(#32E686, 20%);
+
+$color-red: #ED3951;

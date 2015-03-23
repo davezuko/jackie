@@ -133,7 +133,8 @@ $hero-vertical-offset: 1em;
 
   &:hover,
   &:active,
-  &:focus {
+  &:focus,
+  &.active {
     #{$item-namespace}__link {
       color: $accent-color;
 
@@ -151,6 +152,13 @@ $hero-vertical-offset: 1em;
       @include breakpoint($nav-mobile-threshold) {
         display: none;
       }
+    }
+  }
+
+  &.active {
+
+    #{$item-namespace}__link {
+      color: $color-blue;
     }
   }
 

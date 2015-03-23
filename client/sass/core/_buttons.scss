@@ -1,1 +1,27 @@
 @import '../base/base';
+
+button {
+  $primary-color: $color-blue;
+  $secondary-color: $color-white;
+
+  padding: .4rem 1.25rem;
+
+  font-family: $font-heading;
+  font-weight: 300;
+  font-size: 1rem;
+  // text-transform: uppercase;
+  color: $primary-color;
+
+  background: $secondary-color;
+  border: 1px solid $primary-color;
+  border-radius: 5px;
+  transition: .3s all;
+
+  &:focus,
+  &:hover {
+    cursor: pointer;
+
+    color: $secondary-color;
+    background: $primary-color;
+  }
+}

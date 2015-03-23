@@ -21,6 +21,11 @@ module.exports = function (app, config) {
   // ----------------------------------
   app.use(function (req, res, next) {
     res.locals.navigation = NAV_ITEMS;
+
+    const base_href = req.url.split('/');
+    res.locals.active = base_href.length > 0 ?
+      base_href[1].toLowerCase() : 'home';
+
     next();
   });
 
@@ -52,7 +57,7 @@ module.exports = function (app, config) {
   });
 
   require('./views/contact')(app, config);
-  
+
   // ----------------------------------
   // Resume Page
   // ----------------------------------
