@@ -5,4 +5,4 @@ require('./lib/affix')('.navigation', '.view-container');
 require('./components/navigation')('.navigation');
 
 // initialize contact form
-require('./components/contact')('.form--contact');
+require('./components/contact')('.contact-form');

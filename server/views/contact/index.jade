@@ -21,6 +21,6 @@ block view-content
           //-   input(type='checkbox' name='receipt')
         div.col-sm-12.col-md-8.contact-message-container.clearfix
           div.input-group
-            label(for='message') Enter Your Message *
-            textarea(name='message' required)
+            label(for='message') Message (20 character minimum) *
+            textarea(name='message' minlength="20" placeholder='Enter your message here...' required)
           button.contact-submit Submit

@@ -18,6 +18,11 @@ module.exports = function (app, config) {
     app.mailer.send('email', {
       to : 'jkutcher.me@gmail.com',
       subject : `New Contact Message from ${req.body.firstName}!`,
+      details : {
+        firstName : req.body.firstName,
+        lastName  : req.body.lastName,
+        email     : req.body.email
+      },
       message : req.body.message
     }, function (err) {
       if (err) {
@@ -27,19 +32,5 @@ module.exports = function (app, config) {
         res.json({ msg : 'success!' });
       }
     });
-
-    console.log(req.body);
-    // app.mailer.send('email', {
-    //   to: 'jkutcher.me@gmail.com',
-    //   subject: 'Test Email',
-    // }, function (err) {
-    //   if (err) {
-    //     // handle error
-    //     console.log(err);
-    //     res.send('There was an error sending the email');
-    //     return;
-    //   }
-    //   res.send('Email Sent');
-    // });
   });
 };

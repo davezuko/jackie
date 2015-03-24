@@ -1,0 +1,35 @@
+@import '../base/base';
+
+.notification-container {
+  position: fixed;
+  top: 5%;
+  height: auto;
+  width: 25%;
+  right: 0;
+  z-index: 999;
+
+  padding: 0 1rem 0 .25rem;
+}
+
+.notification {
+  position: relative;
+  padding: 1rem .75rem;
+  margin-bottom: .75rem;
+
+  background: $color-blue;
+  color: $color-white;
+  font-size: .85rem;
+  border-radius: 5px;
+
+  .exit {
+    margin-right: .75rem;
+  }
+
+  &.success {
+    background: $color-green;
+  }
+
+  &.error {
+    background: $color-red;
+  }
+}
