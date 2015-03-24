@@ -1,76 +1,101 @@
+// TODO:
+// * container should be generated if not found
+// * curry .notify()
+// ------------------------------------
+// Module Dependencies / Constants
+// ------------------------------------
+const $        = require('./dom');
 const Template = require('./template');
 
-const _api = {};
-const _container = document.querySelector('.notification-container');
-const _notification = new Template([
+const NOTIFICATION_ITEM = new Template([
   '<li class="notification {{ type }}">',
     '<i class="exit fa fa-times"></i>',
     '<span class="message">{{ message }}</span>',
   '</li>'
 ].join(''));
 
-// create notification container
-// const _body = document.querySelector('body');
-// let _container = document.createElement('div');
-// _container.innerHtml = [
-//   '<ol class="notification-container">',
-//   '</ol>'
-// ];
-// _container.style.zIndex = 999;
-// _container.style.position = fixed;
-// _body.app
+// ------------------------------------
+// Initialize DOM
+// ------------------------------------
+const _$container = $.one('.notification-container');
 
+// ------------------------------------
+// Public API
+// ------------------------------------
+const _api = {};
+
+_api.notify = function (message, type, delay) {
+  displayNotification(buildNotification({
+    message, type
+  }), delay);
+};
 
 _api.info = function (message) {
-  const notification = buildNotification({ message, type : 'info' });
-  insertNotification(notification, 3000);
+  _api.notify(message, 'info', 3000);
 };
 
 _api.error = function (message) {
-  const notification = buildNotification({ message, type : 'error' });
-  insertNotification(notification, 10000);
+  _api.notify(message, 'error', 8000);
 };
 
-_api.info = function (message) {
-  const notification = buildNotification({ message, type : 'success' });
-  insertNotification(notification, 3000);
+_api.success = function (message) {
+  _api.notify(message, 'success', 3000);
 };
 
+// ------------------------------------
+// Internal Functions
+// ------------------------------------
 function buildNotification (data) {
-  const template = _notification.render(data);
-
   let node = document.createElement('div');
-  node.innerHTML = _notification.render(data);
-  return node.firstChild;
-}
 
-function insertNotification (node, delay) {
+  node.innerHTML = NOTIFICATION_ITEM.render(data);
+  node = node.firstChild;
+
   node.style.opacity = 1;
   node.style.zIndex  = 999;
+  node.addEventListener('click', handleManualClose);
 
-  _container.appendChild(node);
+  return node;
+}
 
-  window.node = node;
-  if (delay) {
+function handleManualClose (e) {
+  this.removeEventListener('click', handleManualClose);
 
-    setTimeout(function () {
-      removeNotification(node);
-    }, delay);
+  if (e.target.className.indexOf('exit') !== -1) {
+    fadeNotification(this);
   }
 }
 
-function removeNotification (node, callback) {
-  if (node.style.opacity > 0) {
-    node.style.opacity -= .05;
-    setTimeout(function () {
-      removeNotification(node);
-    }, 25);
-  } else {
-    _container.removeChild(node);
+function displayNotification (notification, delay) {
+  _$container.node.appendChild(notification);
+
+  if (delay) {
+    setTimeout(() => fadeNotification(notification), delay);
+  }
+}
+
+function fadeNotification (notification, callback) {
+  if (notification.style.opacity <= 0) {
+    destroyNotification(notification);
     if (typeof callback === 'function') {
       callback();
     }
+    return;
   }
+
+  notification.style.opacity -= 0.05;
+  setTimeout(() => fadeNotification(notification), 25);
 }
 
+function destroyNotification (notification) {
+  notification.removeEventListener('click');
+  
+  try {
+    _$container.node.removeChild(notification);
+  } catch (e) {}
+}
+
+// ------------------------------------
+// Exports
+// ------------------------------------
 module.exports = exports = _api;

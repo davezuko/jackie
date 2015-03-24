@@ -23,6 +23,10 @@
 
   .exit {
     margin-right: .75rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &.success {

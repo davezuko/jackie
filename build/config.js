@@ -86,16 +86,17 @@ config.set('sass_minify', {
 // Code Quality (JSHint)
 // --------------------------
 config.set('js_globals', {
-  'console'     : true,
-  'alert'       : false,
-  'document'    : false,
-  'window'      : false,
-  'setInterval' : false,
-  'setTimeout'  : false,
-  'Image'       : false,
-  'require'     : false,
-  'exports'     : true,
-  'module'      : true
+  'console'        : true,
+  'alert'          : false,
+  'document'       : false,
+  'window'         : false,
+  'setInterval'    : false,
+  'setTimeout'     : false,
+  'Image'          : false,
+  'require'        : false,
+  'exports'        : true,
+  'module'         : true,
+  'XMLHttpRequest' : false
 });
 config.set('jshint', {
   'bitwise'   : false,
