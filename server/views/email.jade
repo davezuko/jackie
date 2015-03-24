@@ -4,5 +4,5 @@ html
     meta(http-equiv = 'Content-Type', content = 'text/html; charset=UTF-8')
     title= subject
     body
-      p= message
-      p From: #{details.firstName} #{details.lastName} (#{details.email})
+      p= data.message
+      p From: #{data.firstName} #{data.lastName} (#{data.email})

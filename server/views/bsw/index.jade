@@ -1,10 +1,17 @@
 extends ../../layouts/main.jade
+include ../../mixins/sidebar
+include ../../mixins/content-with-sidebar
+include ../../mixins/section-container
+include ../../mixins/section-heading
+include ../../mixins/section-subheading
+include ../../mixins/quote
 
 block view-content
-  div.content-container
-    h1.heading--section
-      span.copy BSW Education
-    div.copy-container
+  +section-container()
+    +section-heading('BSW Education')
+    +sidebar()
+      +quote('It is a beautiful thing when a career and a passion come together.', 'Unknown')
+    +content-with-sidebar()
       p Admission to the Bachelor of Social Work degree program is based on the following criteria: a minimum GPA of 2.80; completion of the pre-core courses; experience in the human services field (employment or volunteer work including work completed for SW 210 ); two letters of reference (one from a supervisor in a human services agency); and a personal written statement from students.
       p To earn a major in social work, students must complete a pre-core of 28 credits and a minimum of 48 credits in the core social work curriculum. 
         a.link(href='http://catalog.oakland.edu/preview_program.php?catoid=17&poid=2044') See full program details here.

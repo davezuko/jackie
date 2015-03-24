@@ -1,18 +1,18 @@
 include ../mixins/navigation-item
 
 mixin navigation(items)
-  nav.navigation
+  nav.navigation(role='navigation')
     div.content-container
       div.row
         div.col-sm-12.clearfix
           a(href='/').navigation__hero
             div.desktop-only
-              span Jackie&nbsp;
-              span.navigation__hero__accent |&nbsp;
+              span Jackie
+              span.navigation__hero__accent &nbsp;|&nbsp;
               span Kutcher
             div.tablet-only
-              span J&nbsp;
-              span.navigation__hero__accent |&nbsp;
+              span J
+              span.navigation__hero__accent &nbsp;|&nbsp;
               span K
           a.navigation__toggle
             i.fa.fa-bars

@@ -1,16 +1,16 @@
 extends ../../layouts/main.jade
+include ../../mixins/sidebar
+include ../../mixins/content-with-sidebar
+include ../../mixins/section-container
+include ../../mixins/section-heading
+include ../../mixins/section-subheading
+include ../../mixins/quote
 
 block view-content
-  div.content-container
-    div.row
-      h1.heading--section
-        span.copy Reflection
-      div.sidebar
-        div.quote.quote
-          p.quote-copy It is a beautiful thing when a career and a passion come together.
-          span.quote-attribution
-            span.copy Unknown
-      article.content-with-sidebar
-        div.content
-          p The Oakland University Social Work has had a huge impact on my life. These past two years have been some of the best years of my life. I have been given the opportunity to grow and develop not just as a professional but also as a person. The opportunities presented by the program have been endless and I have tried to take advantage of as much as possible! Every since the day that I got my acceptance letter for this program in the mail I have constantly been able to try new things.
-          p Getting the opportunity to be a student leader would not have happened without the social work program. I also would not have been able to study abroad in Europe which was a life changing experience. I thank every single one of my teachers for inspiring me on a daily basis through their passion for social justice. I also thank my fellow students for pushing my beliefs and sharing their experiences so that I could learn from them as well.
+  +section-container()
+    +section-heading('Reflection')
+    +sidebar()
+      +quote('It is a beautiful thing when a career and a passion come together.', 'Unknown')
+    +content-with-sidebar()
+      p The Oakland University Social Work has had a huge impact on my life. These past two years have been some of the best years of my life. I have been given the opportunity to grow and develop not just as a professional but also as a person. The opportunities presented by the program have been endless and I have tried to take advantage of as much as possible! Every since the day that I got my acceptance letter for this program in the mail I have constantly been able to try new things.
+      p Getting the opportunity to be a student leader would not have happened without the social work program. I also would not have been able to study abroad in Europe which was a life changing experience. I thank every single one of my teachers for inspiring me on a daily basis through their passion for social justice. I also thank my fellow students for pushing my beliefs and sharing their experiences so that I could learn from them as well.

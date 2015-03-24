@@ -1,99 +1,68 @@
-const $ = require('../lib/dom');
-const api = require('../lib/api');
+const $      = require('../lib/dom');
+const Api    = require('../lib/api');
 const Notify = require('../lib/notification');
+const ContactValidation = require('../isomorphic/contact-validation');
 
-let _submitting = false;
-let _form;
-let _submit;
+// ------------------------------------
+// Module Definition
+// ------------------------------------
+const _state = new Map();
+let _$form, _$submit;
 
-const REQUIRED_FIELDS = [
-  { field : 'firstName', length : 2 },
-  { field : 'lastName', length : 2 },
-  { field : 'email', length : 5 },
-  { field : 'message', length : 20 }
-];
-const Submitted = false;
+function init () {
+  _$form   = $.one('.contact-form');
+  _$submit = $.one('.contact-submit');
 
-function init (form) {
-  _form   = form;
-  _submit = $.one('.contact-submit');
-
-  window.submit = _submit;
-
-  _form.on('submit', function (e) {
+  _$form.on('submit', e => {
     e.preventDefault();
-
     handleSubmit();
   });
+  _$submit.on('click', handleSubmit);
+}
 
-  _submit.on('click', function (e) {
-    // e.preventDefault();
-
-    handleSubmit();
-  });
+function setSubmittingState (submitting) {
+  _state.set('submitting', submitting);
+  _$submit.toggleClass('submitting', submitting);
 }
 
 function handleSubmit () {
-  if (_submitting) {
+
+  // return early if a submission is already in progress
+  // or a form has already been submitted
+  if (_state.get('submitting')) {
+    return;
+  } else if (_state.get('submitted')) {
+    Notify.error('You have already submitted a message!');
+    return;
+  }
+  setSubmittingState(true);
+
+  // validate form data
+  const formData = {
+    firstName : _$form.node.firstName.value,
+    lastName  : _$form.node.lastName.value,
+    email     : _$form.node.email.value,
+    message   : _$form.node.message.value
+  };
+  const validationErrors = ContactValidation(formData);
+  if (validationErrors.length) {
+    validationErrors.forEach(err => Notify.error(err.message));
     return;
   }
 
-  const validation = validateForm();
-
-  if (validation !== true) {
-    validation.forEach(err =>
-      Notify.error(`${err.field} ${err.message}`));
-    return;
-  }
-
-  setFormLock(true);
-  api.post('/contact', {
-    firstName : _form.node.firstName.value,
-    lastName  : _form.node.lastName.value,
-    email     : _form.node.email.value,
-    message   : _form.node.message.value
-  }, function (err, resp) {
-    setFormLock(false);
+  // Form is valid, submit to server
+  Api.post('/contact', formData, (err, resp) => {
     if (err) {
       Notify.error('There was an error submitting your form.');
       console.error(err);
     } else {
-      Notify.info('Submission Successful!');
-      console.log(resp);
+      _state.set('submitted', true);
+      Notify.success('Submission successful!');
+      _$form.node.reset();
     }
+
+    setSubmittingState(false);
   });
 }
 
-function setFormLock (lock) {
-  _submitting = lock;
-
-  if (lock) {
-    _submit.node.innerText = 'Submitting...';
-  } else {
-    _submit.node.innerText = 'Submit';
-  }
-}
-
-function validateForm () {
-  const validation = REQUIRED_FIELDS.reduce((memo, item) => {
-    if (_form.node[item.field].value.length < item.length) {
-      memo.push({
-        field   : item.field,
-        message : `doesn\'t meet required length (${item.length})`
-      });
-    }
-    return memo;
-  }, []);
-
-  return validation.length ? validation : true;
-}
-
-module.exports = function (formSelector) {
-  let node = $.one(formSelector);
-
-  if (node) {
-    init(node);
-  } else {
-    console.warn('No contact form found.');
-  }
-};
+module.exports = init;

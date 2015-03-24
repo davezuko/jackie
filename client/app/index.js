@@ -1,8 +1,13 @@
 require('babelify/polyfill');
+const affix      = require('./lib/affix');
+const contact    = require('./components/contact');
+const navigation = require('./components/navigation');
 
 // initialze primary navigation
-require('./lib/affix')('.navigation', '.view-container');
-require('./components/navigation')('.navigation');
+affix('.navigation', '.view-container');
+navigation('.navigation');
 
 // initialize contact form
-require('./components/contact')('.contact-form');
+if (document.querySelector('.contact-form')) {
+  contact();
+}

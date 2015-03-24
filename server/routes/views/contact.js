@@ -1,6 +1,8 @@
 'use strict';
-
 const mailer = require('express-mailer');
+const validateContact = require(
+  '../../../client/app/isomorphic/contact-validation'
+);
 
 module.exports = function (app, config) {
   mailer.extend(app, config.get('mailer'));
@@ -12,24 +14,27 @@ module.exports = function (app, config) {
   });
 
   app.post('/contact', function (req, res) {
+    const data   = req.body;
+    const errors = validateContact(data);
 
-    // TODO: verify all required data exists
-    // TODO: XSS preventions
+    if (errors.length) {
+      return res.status(400).json({
+        message : 'Contact submission validation failed.',
+        errors  : errors
+      });
+    }
+
+    // TODO: do we need to handle timeouts?
     app.mailer.send('email', {
       to : 'jkutcher.me@gmail.com',
-      subject : `New Contact Message from ${req.body.firstName}!`,
-      details : {
-        firstName : req.body.firstName,
-        lastName  : req.body.lastName,
-        email     : req.body.email
-      },
-      message : req.body.message
+      subject : `New Contact Message from ${data.firstName}!`,
+      data    : data,
     }, function (err) {
       if (err) {
         console.log(err);
-        res.status(500).json({ msg : 'test error' });
+        res.status(500).json({ message : 'Server submission error.' });
       } else {
-        res.json({ msg : 'success!' });
+        res.json({ message : 'Contact submission successful.' });
       }
     });
   });
