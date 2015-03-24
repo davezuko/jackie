@@ -35,7 +35,7 @@ module.exports = function (base) {
   // ----------------------------------
   // Mailer
   // ----------------------------------
-  config.set('mailer', require('./mailer.js'));
+  config.set('mailer', require('./mailer.ignore.js'));
 
   return config;
 }

@@ -1,0 +1,22 @@
+include ../mixins/navigation-item
+
+mixin navigation(items)
+  nav.navigation
+    div.content-container
+      div.row
+        div.col-sm-12.clearfix
+          a(href='/').navigation__hero
+            div.desktop-only
+              span Jackie&nbsp;
+              span.navigation__hero__accent |&nbsp;
+              span Kutcher
+            div.tablet-only
+              span J&nbsp;
+              span.navigation__hero__accent |&nbsp;
+              span K
+          a.navigation__toggle
+            i.fa.fa-bars
+          ul.navigation__links.list--unstyled
+            +navigation-item('Home', '/', true)
+            each item in items
+              +navigation-item(item.name, item.route)

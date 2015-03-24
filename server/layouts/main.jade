@@ -1,7 +1,4 @@
-mixin nav-item(name, route, mobileOnly)
-  - var classes = [name.toLowerCase() === active ? 'active' : '', mobileOnly ? 'mobile-only' : ''];
-  li.navigation__item(class=classes)
-    a.navigation__item__link.link--animate(href="#{route}")=name
+include ../components/navigation
 
 doctype html
 html(lang='en')
@@ -18,45 +15,9 @@ html(lang='en')
     ol.notification-container
     div.page-container
       block header
-      nav.navigation
-        div.content-container
-          div.row
-            div.col-sm-12.clearfix
-              a(href='/').navigation__hero
-                div.desktop-only
-                  span Jackie&nbsp;
-                  span.navigation__hero__accent |&nbsp;
-                  span Kutcher
-                div.tablet-only
-                  span J&nbsp;
-                  span.navigation__hero__accent |&nbsp;
-                  span K
-              a.navigation__toggle
-                i.fa.fa-bars
-              ul.navigation__links.list--unstyled
-                +nav-item('Home', '/', true)
-                each item in navigation
-                  +nav-item(item.name, item.route)
+      +navigation(navigation)
       div.view-container
-        if heading
-          h1.heading--section#heading
-            span.copy=heading
-        block view-content
-      footer
-        div.content-container
-          div.row
-            div.col-sm-12.contact
-              div.copy
-                p Want to get in touch? Check out my 
-                  a.link(href='/contact') contact page
-                  |  or find me here:
-              ul.contact__links
-                li.linkedin
-                  a(href='//linkedin.com/pub/jacqueline-kutcher/b1/754/2ba')
-                    span.sr-only LinkedIn
-                    i.fa.fa-linkedin
-                li.email
-                  a(href='mailto:test@dev.com')
-                    span.sr-only Email
-                    i.fa.fa-envelope-o
+        main.content-container(role='main')
+          block view-content
+      include ../components/footer
     script(src=assetFingerprint('app/app-bundle.js') defer)
