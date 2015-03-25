@@ -7,10 +7,7 @@
   padding-left: (100% / 4);
 
   @include breakpoint($tablet) {
-    padding-left: 100% * (5 / 12);
-  }
-  @include breakpoint($mobile) {
-    padding-left: 100% * (12 / 12);
+    padding: 0;
   }
 
   .copy {
@@ -27,6 +24,10 @@
     &:after {
       font-family: FontAwesome;
       color: $color-blue;
+
+      @include breakpoint($tablet) {
+        display: none;
+      }
     }
 
     &:before {
@@ -35,6 +36,11 @@
 
     &:after {
       margin-left: .65rem;
+    }
+
+    @include breakpoint($tablet) {
+      margin-left: 0;
+      text-align: center;
     }
   }
 

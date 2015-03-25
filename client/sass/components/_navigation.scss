@@ -157,8 +157,10 @@ $hero-vertical-offset: 1em;
 
   &.active {
 
-    #{$item-namespace}__link {
-      color: $color-blue;
+    @include breakpoint-min($nav-mobile-threshold) {
+      #{$item-namespace}__link {
+        color: $color-blue;
+      }
     }
   }
 

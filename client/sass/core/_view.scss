@@ -1,10 +1,11 @@
 @import '../base/base';
 
 .view-container {
-  background: $view-background-color;
   position: relative;
+  padding: 0 0 1.5rem;
   z-index: 1;
   overflow: hidden;
+  background: $view-background-color;
 }
 
 .content-container {

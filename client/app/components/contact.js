@@ -47,6 +47,7 @@ function handleSubmit () {
   const validationErrors = ContactValidation(formData);
   if (validationErrors.length) {
     validationErrors.forEach(err => Notify.error(err.message));
+    setSubmittingState(false);
     return;
   }
 
