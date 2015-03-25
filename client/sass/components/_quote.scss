@@ -1,14 +1,15 @@
 @import '../base/base';
 
+$quote-mark-color: $color-blue--faded;
 
 .quote {
   @extend .clearfix;
-  color: tint($color-teal--dark, 25%);
+  color: tint($color-teal--dark, 15%);
 
   &:before,
   &:after {
     font-family: FontAwesome;
-    color: $color-blue;
+    color: $quote-mark-color;
   }
 
   &:before {
@@ -26,7 +27,7 @@
 .quote-attribution {
   float: right;
   margin-top: .5rem;
-  color: $color-teal--dark;
+  color: shade($color-teal--dark, 25%);
 
   &:before {
     content: '- ';
@@ -36,6 +37,6 @@
     content: '\f10e';
     margin-left: 1rem;
     font-family: FontAwesome;
-    color: $color-blue;
+    color: $quote-mark-color;
   }
 }

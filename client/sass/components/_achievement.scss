@@ -1,17 +1,18 @@
 @import '../base/base';
 
 .achievements__list {
+  padding-left: 1rem;
   margin: 0 0 1.5rem;
 }
 
 .achievement__item {
   margin: 0 0 .3rem;
-  padding-left: 2.5rem;
+  padding-left: 1.5rem;
 
   &:before {
     position: absolute;
     content: '\f005';
-    left: 1rem;
+    left: 2rem;
     font-family: FontAwesome;
     color: $color-blue;
   }

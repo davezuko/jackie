@@ -1,4 +1,11 @@
 extends ../../layouts/main.jade
+include ../../mixins/sidebar
+include ../../mixins/content
+include ../../mixins/content-with-sidebar
+include ../../mixins/section-container
+include ../../mixins/section-heading
+include ../../mixins/section-subheading
+include ../../mixins/quote
 
 mixin gallery-item(src, title, id)
   div.gallery__item(id=id)
@@ -6,12 +13,11 @@ mixin gallery-item(src, title, id)
     div.gallery__item__img(style='background-image: url(#{src})')
 
 block view-content
-  div.content-container
-    h1.heading--section
-      span.copy Personal Gallery
-    div.row
-      ul.gallery-items.list--unstyled
-        - for (var i=1; i<=12; i++)
-          - var padded = i < 10 ? "0" + i : i;
-          li.col-sm-4
-            +gallery-item('img/gallery/social-work-club-' + padded + '.jpg', 'Test Item', 'social-work-' + padded)
+  +section-container()
+    +section-heading('My Gallery', true)
+    +content()
+    ul.gallery-items.list--unstyled
+      - for (var i=1; i<=12; i++)
+        - var padded = i < 10 ? "0" + i : i;
+        li.col-sm-4
+          +gallery-item('img/gallery/social-work-club-' + padded + '.jpg', 'Test Item', 'social-work-' + padded)

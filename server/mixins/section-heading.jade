@@ -1,3 +1,4 @@
-mixin section-heading(text)
-  h1.heading--section
+mixin section-heading(text, noSidebar)
+  - var classes = noSidebar ? "no-sidebar" : "";
+  h1.heading--section(class=classes)
     span.copy=text

@@ -1,62 +1,66 @@
 @import '../base/base';
 
 .heading {
-  text-transform: uppercase;
-  color: $heading-color;
+  display: block;
+  position: relative;
+  margin: 2rem 0 1.75rem;
+  padding-left: (100% / 4);
+
+  @include breakpoint($tablet) {
+    padding-left: 100% * (5 / 12);
+  }
+  @include breakpoint($mobile) {
+    padding-left: 100% * (12 / 12);
+  }
+
+  .copy {
+    display: block;
+    width: 100%;
+    margin-left: 1rem;
+    padding: 0 0 .35rem 0rem;
+
+    color: $heading-color;
+    text-transform: uppercase;
+    border-bottom: $nav-border;
+
+    &:before,
+    &:after {
+      font-family: FontAwesome;
+      color: $color-blue;
+    }
+
+    &:before {
+      margin-right: .65rem;
+    }
+
+    &:after {
+      margin-left: .65rem;
+    }
+  }
+
+  &.no-sidebar {
+    padding: 0 8px;
+
+    .copy {
+      text-align: center;
+      margin-left: 0;
+
+      &:after {
+        content: '\f100';
+      }
+    }
+  }
 }
 
 .heading--section {
-  $accent-color: tint($color-teal--dark, 50%);
-
   @extend .heading;
 
-  display: block;
-  position: relative;
-  margin: 1.75rem 0 1rem;
-
-  font-size: 2.35rem;
-  text-align: center;
-  font-weight: 300;
-
   .copy {
-    position: relative;
-    padding: 0 1rem;
-
-    background: $view-background-color;
+    font-size: 2.45rem;
+    font-weight: 300;
 
     &:before {
-      $width: 200%;
-
-      content: '';
-      position: absolute;
-      height: 1px;
-      background: $accent-color;
-      width: $width;
-      left: -(100% - ($width / 4));
-      top: 50%;
-      z-index: -1;
-    }
-
-    @include breakpoint($mobile) {
-      padding: 1rem 0;
-      background: none;
-
-
-      &:before {
-        top: 0;
-        left: -50%;
-      }
-
-      &:after {
-        content: '';
-        position: absolute;
-        height: 1px;
-        background: $accent-color;
-        width: 200%;;
-        left: -50%;
-        bottom: 0;
-        z-index: -1;
-      }
+      content: '\f101';
     }
   }
 }
@@ -64,26 +68,12 @@
 .heading--secondary {
   @extend .heading;
 
-  position: relative;
-  margin: 2rem auto;
-  text-align: center;
-
   .copy {
-    position: relative;
-    padding: 0 5rem .5rem;
-
-    font-family: $font-heading;
+    font-size: 2rem;
     font-weight: 300;
-    text-transform: uppercase;
-    border-bottom: 1px solid tint($color-teal--dark, 50%);
 
-    @include breakpoint($tablet) {
-      padding: 0 4rem .5rem;
-    }
-
-    @include breakpoint($tablet) {
-      padding: 0 0 .5rem;
-      border-bottom: none;
+    &:before {
+      content: '\f105';
     }
   }
 }
