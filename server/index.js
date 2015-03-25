@@ -42,6 +42,7 @@ if (config.get('trust_proxy')) {
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
+require('./routes/public')(app, config);
 require('./routes/client')(app, config);
 require('./routes/views')(app, config);
 // ---------------------------------------
