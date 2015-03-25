@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 'use strict';
 
 const REQUIRED_FIELDS = [
@@ -29,3 +30,4 @@ module.exports = function (data) {
     return [{ message : 'Validation Error.' }];
   }
 };
+/* jshint ignore:end */
