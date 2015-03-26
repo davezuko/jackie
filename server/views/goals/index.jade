@@ -9,13 +9,12 @@ include ../../mixins/quote
 block view-content
   +section-container()
     +section-subheading('Educational Goals')
-    +sidebar()
-      //- +quote('It is a beautiful thing when a career and a passion come together.', 'Unknown')
+    div.sidebar
+      div.image-container.image-container--sidebar
+        img(src='//s-media-cache-ak0.pinimg.com/736x/7d/4c/7b/7d4c7ba55d5a24ba9379e3d18733d7dd.jpg' alt="")
     +content-with-sidebar()
       p I will be attending Western Michigan University starting in July 2015. My goals for my education are to graduate with my MSW degree with a concentration in Policy, Planning, and Administration. Another goal I have is to get an internship working with women, immigrants, or low-income families. I also want to stay an active member of Phi Alpha Social Work Honor Society at Western Michigan University. Another goal of mine is to learn more about victim blaming and slut shaming through reading and volunteering at a local sexual assault shelter or agency.
-  +section-container()
-    +section-subheading('Career Goals')
-    +sidebar()
-      //- +quote('It is a beautiful thing when a career and a passion come together.', 'Unknown')
-    +content-with-sidebar()
-      p My goals for my career as a social worker are to obtain a job in North Carolina or Georgia at a social justice agency. I want to work in an agency that provides women and men of domestic violence and sexual assault with resources and advocacy. A goal of mine is to write grants that can help fund programs that proactively address the issue of sexual assault. Another career goal of mine is to work on a political campaign that promotes positive social change. I eventually want to run for office with social work values and  ethics close to my heart. I want to make changes in our prison system, criminal justice system, and welfare system.
+      h2.heading--secondary.heading--no-sidebar
+        span.copy Career Goals
+      article
+        p My goals for my career as a social worker are to obtain a job in North Carolina or Georgia at a social justice agency. I want to work in an agency that provides women and men of domestic violence and sexual assault with resources and advocacy. A goal of mine is to write grants that can help fund programs that proactively address the issue of sexual assault. Another career goal of mine is to work on a political campaign that promotes positive social change. I eventually want to run for office with social work values and  ethics close to my heart. I want to make changes in our prison system, criminal justice system, and welfare system.

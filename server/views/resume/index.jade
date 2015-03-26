@@ -9,25 +9,72 @@ include ../../mixins/section-subheading
 include ../../mixins/quote
 
 block view-content
+  +section-heading('Resume', true)
   +section-container()
-    +section-heading('Resume')
+    //- +sidebar()
+    +content()
+      div.resume
+        section.resume__section
+          h2.resume__heading Objective
+          p Seeking a challenging opportunity within the social work field, particularly in social justice issues, which will further my education and experience, while providing significant value to my employer. 
+        section.resume__section
+          h3.resume__subheading Education
+          div.resume__item
+            div.resume__item__heading
+              div.resume__item__heading__title Oakland University,&nbsp;
+                em Rochester, MI
+              div.resume__item__heading__date  Anticipated Graduation: May 2015
+
+            ul.resume__item__details
+              li Bachelors of Social Work
+              li President of the Oakland University Social Work Club
+              li Phi Alpha Honor Society member
+              li Global Health Study Abroad with Oakland University Social Work Program
+
+        section.resume__section
+          h3.resume__subheading Education
+          div.resume__item
+            div.resume__item__heading
+              div.resume__item__heading__title  Macomb Family Services,&nbsp;
+                em Clinton Twp., MI
+              div.resume__item__heading__date  September 2014 - Present
+
+            ul.resume__item__details
+              li Assess and promote social emotional development in children ages 0-5.
+              li Utilize evidence-based assessments, screenings, and strategies.
+              li Facilitate Positive Solutions for Parents workshops 
+              li Established a Autism Resource binder for the agency
+              li Created a self-care assessment tool for employees
+
+
+        section.resume__section
+          h3.resume__subheading Volunteer Work
   +section-container()
     +section-subheading('Achievements')
     +sidebar()
-      +quote('It is a beautiful thing when a career and a passion come together.', 'Unknown')
+      div.image-container.image-container--sidebar.achievement-sidebar
+        img(src='img/gallery/social-work-club-03.jpg' alt='O.U. Social Work Club eboard at Friendsgiving 2014')
+        span.caption O.U. Social Work Club eboard at Friendsgiving 2014
     +content-with-sidebar()
       ul.achievements__list
-        +achievement('President of Oakland University’s Social Work Club')
+        +achievement('2014-2015 President of Oakland University\'s Social Work Club')
         +achievement('Active member of Phi Alpha National Social Work Honor Society')
-        +achievement('Recipient of Oakland University’s First Year Achievement Scholarship')
+        +achievement('Recipient of Oakland University\'s First Year Achievement Scholarship')
         +achievement('Recipient of Best Buy Scholarship for volunteer experience')
-        +achievement('Accepted into Western Michigan’s Advanced Standing Master’s Degree Program')
-        +achievement('Raised over $500 for Making Strides 5K in Rochester, MI in 2015')
-        +achievement('Raised over $200 for Relay for Life at Oakland University in 2014')
-        +achievement('Collaborated with Oakland University’s Phi Alpha Honor Society to collect cans for a local homeless shelter')
-        +achievement('Organized Social Work Club events with other Eboard members')
-        +achievement('Hosted monthly club meetings and arranging engaging ice breakers')
-        +achievement('Executed a Penny Drive fundraiser between the Juniors and Seniors of the Oakland University Social Work Program for the Susan G Koman Foundation')
-        +achievement('Arranged a bake sale and Bowling Fundraiser to raise money and awareness for the American Heart Association')
-        +achievement('Participated in a Phi Alpha Honor Society Can Drive to raise money for Teach4Detroit')
-        +achievement('Mentor of a Junior social work student through Phi Alpha Honor Society at Oakland University')
+        +achievement('Accepted into Western Michigan\'s Advanced Standing Master\'s Degree Program')
+        +achievement('Achieved a certification in Mentor in Violence Protection through HAVEN')
+      h2.heading--secondary.heading--no-sidebar
+        span.copy Student Organization Accomplishments
+      article
+        ul.achievements__list
+          +achievement('Raised over $500 for Making Strides 5K in Rochester, MI in 2015')
+          +achievement('Raised over $200 for Relay for Life at Oakland University in 2014')
+          +achievement('Raised $271 for the American Heart Association through a bowling fundraiser and bake sale in 2015')
+          +achievement('Attended Oakland University Leadership Institute 2014')
+          +achievement('Organized Social Work Club events with other eboard members')
+          +achievement('Hosted monthly club meetings and arranging engaging ice breakers')
+          +achievement('Executed a Penny Drive fundraiser between the Juniors and Seniors of the Oakland University Social Work Program for the Susan G Koman Foundation')
+          +achievement('Organized the Bowl Your Heart Out fundraiser for the American Heart Association')
+          +achievement('Participated in a Phi Alpha Honor Society Can Drive to raise money for Teach4Detroit')
+          +achievement('Mentored a Junior social work student through Phi Alpha Honor Society at Oakland University')
+          +achievement('Hosted a Victim Blaming Pledge to raise awareness for sexual assault victims on campus')

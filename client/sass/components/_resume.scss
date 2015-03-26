@@ -1,0 +1,91 @@
+@import '../base/base';
+
+.resume__section {
+
+}
+
+.resume__heading {
+  margin-bottom: 1rem;
+  font-weight: 300;
+  font-family: $font-heading;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+
+  &:before {
+    content: '\f101';
+    margin-right: 1rem;
+    font-family: FontAwesome;
+    color: $color-blue;
+  }
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.resume__subheading {
+  margin-bottom: 1rem;
+  font-weight: 300;
+  font-family: $font-heading;
+  font-size: 2rem;
+  text-transform: uppercase;
+
+  &:before {
+    content: '\f105';
+    margin-right: 1rem;
+    font-family: FontAwesome;
+    color: $color-blue;
+  }
+}
+
+.resume__item {
+
+}
+
+.resume__item__heading {
+  @extend .clearfix;
+
+  &__title {
+    float: left;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  &__date {
+    float: right;
+    font-weight: 100;
+  }
+}
+
+.resume__item__details {
+  padding-right: 35%;
+
+  &__position {
+
+  }
+
+  li {
+    position: relative;
+    margin: .25rem 0 0 1rem;
+    padding: 0 0 0 1.5rem;
+
+    &:first-of-type {
+      margin-top: .5rem;
+    }
+
+    &:before {
+      position: absolute;
+      left: 0;
+      top: .25rem;
+      content: '\f10c';
+      font-family: FontAwesome;
+      color: $color-blue;
+    }
+
+    &:hover {
+      &:before {
+        content: '\f111';
+      }
+    }
+  }
+}
