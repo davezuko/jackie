@@ -1,4 +1,5 @@
 extends ../../layouts/main.jade
+include ../../components/bsw-class
 include ../../mixins/sidebar
 include ../../mixins/content-with-sidebar
 include ../../mixins/section-container
@@ -8,12 +9,11 @@ include ../../mixins/quote
 
 block view-content
   +section-container()
-    +section-heading('BSW Education')
+    +section-heading('Bachelor\'s of Social Work', true)
     +sidebar()
-      +quote('It is a beautiful thing when a career and a passion come together.', 'Unknown')
+      +quote('To know that even one life has breathed easier because you have lived. This is to have succeeded.', 'Ralph Waldo Emerson')
     +content-with-sidebar()
       p Admission to the Bachelor of Social Work degree program is based on the following criteria: a minimum GPA of 2.80; completion of the pre-core courses; experience in the human services field (employment or volunteer work including work completed for SW 210 ); two letters of reference (one from a supervisor in a human services agency); and a personal written statement from students.
-      p To earn a major in social work, students must complete a pre-core of 28 credits and a minimum of 48 credits in the core social work curriculum. 
         a.link(href='http://catalog.oakland.edu/preview_program.php?catoid=17&poid=2044') See full program details here.
   +section-container()
     +section-subheading('Internship')
@@ -30,4 +30,78 @@ block view-content
     +sidebar()
     +content-with-sidebar()
       p At my internship I provided home visiting services for three clients through my time at Macomb Family Services. I was able to practice and learn micro social work interventions  including building rapport, using assessment tools, creating goals and outcomes with clients, discussing strengths, and developing a plan of action. I worked with both the parents and the teachers of each child which gave me experience working with other professionals outside of the social work profession.
-      p I would assist the teacher by sitting in on several classes to observe my clients behaviors. The teacher and I would then use my observations to come up with strategies to help prevent the negative behaviors and increase self-esteem in the child. I then followed up with the parents and teacher after the strategies had been developed to see if the situation was improving. After a few weeks I had the parents and teacher fill out another social emotional development assessment so that I could compare the pre and post assessments to evaluate if there was any significant change.
+      p I would assist the teacher by sitting in on several classes to observe my clients behaviors. The teacher and I would then use my observations to come up with strategies to help prevent the negative behaviors and increase self-esteem in the child. I then followed up with the parents and teacher after the strategies had been developed to see if the situation was improving. After a few weeks I had the parents and teacher fill out another social emotional development assessment so that I could compare the pre and post assessments to evaluate if there was any significant change.    
+  +section-container()
+    +section-heading('BSW Education', true)
+    +sidebar()
+      div.image-container.image-container--sidebar
+        img(src='img/logos/ou_social_work.jpg' alt="Bachelor's of Social Work at Oakland University")
+    +content-with-sidebar()
+      p To earn a major in social work, students must complete a pre-core of 28 credits and a minimum of 48 credits in the core social work curriculum.
+      table.bsw-class-table
+        tbody
+          tr
+            th Required Classes
+            th Co-requisite
+            th Core Social Work Curriculum
+          tr.bsw-class-table__items
+            td
+              span.bsw-class-table__item SW/SOC 210: Introduction to Social Work
+              span.bsw-class-table__item BIO 104: Human Biology or BIO 111 Biology*
+              span.bsw-class-table__item PSY 100: Foundations of Contemporary Psychology*
+              span.bsw-class-table__item SOC 100: Introduction to Sociology*
+              span.bsw-class-table__item PS 100: Introduction to American Politics*
+            td
+              span.bsw-class-table__item AN 102 - Culture and Human Nature
+              span.bsw-class-table__item
+                br
+                strong One Sociology/Criminal Justice elective selected from
+              span.bsw-class-table__item CRJ 100 - Introduction to Criminal Justice 
+              span.bsw-class-table__item SOC 207 - Human Sexuality
+              span.bsw-class-table__item SOC 240 - Sociology of Crime and Punishment
+              span.bsw-class-table__item SOC 300 - Alcohol, Drugs and Society 
+              span.bsw-class-table__item SOC 301 - Social Stratification 
+              span.bsw-class-table__item SOC 305 - Sociology of Religion 
+              span.bsw-class-table__item SOC 323 - Delinquency and Juvenile Justice 
+              span.bsw-class-table__item SOC 326 - Family and Community Processes
+              span.bsw-class-table__item SOC 327 - Police and Society
+              span.bsw-class-table__item SOC 331 - Racial and Ethnic Relations 
+              span.bsw-class-table__item SOC 335 - The Family 
+              span.bsw-class-table__item SOC 337 - Interpersonal Relationships
+              span.bsw-class-table__item SOC 465 - Sociological Perspectives on Aging
+
+            td
+              span.bsw-class-table__item SOC 202: Introduction to Methods of Social Research
+              span.bsw-class-table__item SOC 203: Social Statics with Computer apps
+              span.bsw-class-table__item SW 310: HBSE I
+              span.bsw-class-table__item SW 311: HBSE II
+              span.bsw-class-table__item SOC/SW 315: Social Welfare Policies
+              span.bsw-class-table__item SW 316: Fundamentals of Social Work Practice
+              span.bsw-class-table__item SW 318: Foundations of Multicultural Practice
+              span.bsw-class-table__item SW 405: Social Work Practice I
+              span.bsw-class-table__item SW 406: Social Work Practice II
+              span.bsw-class-table__item SW 430: Social Work Internship I
+              span.bsw-class-table__item SW 431: Social Work Seminar I
+              span.bsw-class-table__item SW 432: Social Work Internship II
+              span.bsw-class-table__item
+                br
+                strong SW 433: Social Work Seminar II
+              span.bsw-class-table__item One diversity course selected from
+              span.bsw-class-table__item SOC 331 - Racial and Ethnic Relations
+              span.bsw-class-table__item WGS 200 - Introduction to Women and Gender Studies
+
+      ul.bsw-class-list
+        +bsw-class('sw-210', 'SW 210: Introduction to Social Work', 'Study of the social work profession and the social context of welfare policies; the relationships between social structure and the development of social work practice; and public and private welfare organizations.')
+        +bsw-class('soc-202', 'SOC 202: Introduction to Methods of Social Research', 'The collection, organization, analysis and interpretation of social data; elementary techniques of understanding and using quantitative evidence in sociological research.')
+        +bsw-class('soc-203', 'SOC 203: Social Statistics with Computer Applications', 'Introduction to social statistics emphasizing statistics and data analysis with the aid of computer-based statistical applications. Familiarizes students with the logic of behavioral statistics and the computation and interpretation of statistical analysis.')
+        +bsw-class('sw-315', 'SW 315: Social Welfare Policies', 'Survey of the development of social welfare programs in the U.S. and internationally. Issues related to the problems of poverty, policy analysis and program evaluation related to social welfare in the U.S. and other countries are examined.')
+        +bsw-class('sw-310', 'SW 310: Human Behavior and Social Environment', 'Theories of human behavior and social environment. Examines biological, psychological, social, spiritual development in humans from birth to adolescence. Social systems theory is applied to analyze interactions between human behavior and social institutions. Explores role of culture, race, ethnicity, social class, gender, sexual orientation in human development and behavior.')
+        +bsw-class('sw-311', 'SW 311: Human Behavior and Social Environment', 'Presents theories of human behavior and social environment. Examines biological, psychological, social, spiritual development in humans from early to late adulthood. Social systems theory is applied to analyze interactions between human behavior and social institutions. Explores role of culture, race, ethnicity, social class, gender, sexual orientation in human development and behavior.')
+        +bsw-class('sw-316', 'SW 316: Fundamentals of Social Work Practice', 'Fundamental social work methods including documentation, listening skills, interviewing skills, relationship building, boundary setting and case management. Completion of a service learning requirement in preparation for internship.')
+        +bsw-class('sw-318', 'SW 318: Fundamentals of Multicultural Social Work', 'Prepares students to work with multicultural and diverse populations. Emphasis on defining and developing skills for culturally competent social work generalist practice.')
+        +bsw-class('sw-405', 'SW 405: Social Work Practice I', 'Prepares students for generalist social work practice involving individuals, families, other groups. Emphasizes how to engage clients, assess needs, provide intervention, terminate intervention, evaluate outcomes. Provides conceptual framework for practicing social work in diverse settings; prepares students with skills for field placement; presents students values, ethical standards of the profession.')
+        +bsw-class('sw-406', 'SW 406: Social Work Practice II', 'Prepares students for generalist social work practice involving task groups, organizations, communities. Focus on critical thinking about clients in context of larger environment; analyzing relevant interactions within groups, organizations, communities; analyzing operation of groups from political, economic, social perspectives. Examines issues of discrimination, social justice, institutional racism.')
+        +bsw-class('sw-430', 'SW 430: Social Work Internship I', 'Field placement in social service agency in which students are supervised by professional social workers. Students learn how to handle process notes, develop interviewing skills, investigate community resources, and interpret agency policies.')
+        +bsw-class('sw-431', 'SW 431: Social Work Seminar I', 'Students present and analyze field experiences to develop capacity for self-awareness; development and appropriate application of social work knowledge, values, skills. Review of helping process, generalist practice, theoretical foundations. Prepares students to work with diverse and at-risk clients. Lays foundation for continuing professional development. Weekly seminar accompanies first-semester internship.')
+        +bsw-class('sw-432', 'SW 432: Social Work Internship II', 'Second field placement in a social service agency in which students are supervised by professional social workers. Students learn how to handle process notes, develop interviewing skills, investigate community resources, and interpret agency policies.')
+        +bsw-class('sw-433', 'SW 433: Social Work Seminar II', 'Weekly seminar held in conjunction with second semester of the social work internship. Students analyze field experiences to further enhance self-awareness, and the development and appropriate application of social work knowledge, values and skills in practice. Capstone course in which students complete a major integrative paper and portfolio.')

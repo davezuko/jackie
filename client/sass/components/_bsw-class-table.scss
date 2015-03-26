@@ -1,0 +1,53 @@
+@import '../base/base';
+
+.bsw-class-table {
+  margin-bottom: 1.5rem;
+
+  th {
+    padding: .5rem 0;
+
+    color: $color-white;
+    font-family: $font-heading;
+    text-transform: uppercase;
+  }
+
+  th:nth-of-type(1) {
+    background: transparentize($color-blue, .3);
+  }
+
+  th:nth-of-type(2) {
+    background: transparentize($color-blue, .2);
+  }
+
+  th:nth-of-type(3) {
+    background: transparentize($color-blue, .1);
+  }
+
+
+  &__items {
+
+    > td {
+      padding: 1rem;
+      vertical-align: top;
+
+      &:nth-of-type(1) {
+        background: transparentize($color-blue, .9);
+      }
+
+      &:nth-of-type(2) {
+        background: transparentize($color-blue, .8);
+      }
+
+      &:nth-of-type(3) {
+        background: transparentize($color-blue, .7);
+      }
+    }
+  }
+
+
+  &__item {
+    display: block;
+
+    margin-bottom: .75rem;
+  }
+}

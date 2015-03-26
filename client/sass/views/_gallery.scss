@@ -24,7 +24,7 @@
     padding: 2rem 0;
     z-index: 2;
     opacity: 1;
-    transform: translateY(6rem);
+    transform: translateY(12rem);
     transition: all .3s;
 
     color: $color-white;
@@ -53,56 +53,72 @@
 // ---------------------------------------------
 // Item-Specific Cropping
 // ---------------------------------------------
-[id='social-work-01'] {
+[id='social-work-club-01'] {
   .gallery__item__img {
     background-position: 49% 10%;
     background-size: cover;
   }
 }
 
-[id='social-work-02'] {
+[id='social-work-club-02'] {
   .gallery__item__img {
   }
 }
 
-[id='social-work-03'] {
+[id='social-work-club-03'] {
   .gallery__item__img {
   }
 }
 
-[id='social-work-04'] {
+[id='social-work-club-04'] {
   .gallery__item__img {
     background-size: initial;
     background-position: 50% 50%;
   }
 }
 
-[id='social-work-05'] {
+[id='social-work-club-05'] {
   .gallery__item__img {
     background-position: 75% 9%;
   }
 }
 
-[id='social-work-06'] {
+[id='social-work-club-06'] {
   .gallery__item__img {
     background-position: 45% 0;
   }
 }
 
-[id='social-work-07'] {
+[id='social-work-club-07'] {
   .gallery__item__img {
 
   }
 }
 
-[id='social-work-08'] {
+[id='social-work-club-08'] {
   .gallery__item__img {
 
   }
 }
 
-[id='social-work-09'] {
+[id='social-work-club-09'] {
   .gallery__item__img {
     background-position: 50% 10%;
   }
+}
+
+[id='social-work-club-10'] {
+  .gallery__item__img {
+    background-position: 50% 10%;
+  }
+}
+
+[id='social-work-club-11'] {
+  .gallery__item__img {
+    background-position: 50% 10%;
+  }
+}
+
+[id='social-work-club-12'] {
+
 }
