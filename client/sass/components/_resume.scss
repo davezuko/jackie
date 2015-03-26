@@ -39,7 +39,11 @@
 }
 
 .resume__item {
+  &:first-of-type {
+    margin-top: 0;
+  }
 
+  margin-top: 1rem;
 }
 
 .resume__item__heading {
@@ -49,19 +53,28 @@
     float: left;
     font-size: 1.15rem;
     font-weight: 700;
+
+    @include breakpoint($tablet) {
+      float: none;
+    }
   }
 
   &__date {
     float: right;
     font-weight: 100;
+
+    @include breakpoint($tablet) {
+      float: none;
+      margin: .5rem 0;
+    }
   }
 }
 
 .resume__item__details {
-  padding-right: 35%;
+  padding-right: 30%;
 
-  &__position {
-
+  @include breakpoint($tablet) {
+    padding-right: 0;
   }
 
   li {

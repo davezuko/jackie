@@ -6,18 +6,21 @@
 }
 
 .achievement__item {
+  position: relative;
   margin: 0 0 .3rem;
   padding-left: 1.5rem;
 
   &:before {
     position: absolute;
     content: '\f005';
-    left: 2rem;
+    left: 0rem;
+    top: .25rem;
     font-family: FontAwesome;
     color: $color-blue;
+
+    @include breakpoint($tablet) {
+      // left: 1.25rem;
+    }
   }
 
-  &:nth-of-type(even) {
-    // background: tint($color-blue, 97%);
-  }
 }
