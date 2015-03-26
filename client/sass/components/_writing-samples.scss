@@ -1,0 +1,54 @@
+@import '../base/base';
+
+.writing-samples {
+
+  &__heading {
+    text-align: center;
+  }
+
+  > li {
+    display: block;
+    margin: 0 0 1rem;
+
+    &:focus,
+    &:active,
+    &:hover {
+      color: $color-blue;
+    }
+  }
+}
+
+.download-link {
+  position: relative;
+  padding-left: 1.5rem;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.download-type {
+  &:before {
+    position: absolute;
+    left: 0;
+    top: .05rem;
+    font-family: FontAwesome;
+  }
+}
+
+.download-type--doc {
+  @extend .download-type;
+
+  &:before {
+    content: '\f1c2';
+    color: $color-blue;
+  }
+}
+
+.download-type--ppt {
+  @extend .download-type;
+
+  &:before {
+    content: '\f1c4';
+    color: $color-orange;
+  }
+}
