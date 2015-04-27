@@ -11,3 +11,6 @@ navigation('.navigation');
 if (document.querySelector('.contact-form')) {
   contact();
 }
+
+// analytics
+require('./lib/analytics');
